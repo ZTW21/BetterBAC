@@ -3,6 +3,7 @@
 //  BetterBAC
 //
 //  Created by Zack Wilson on 6/4/24.
+//  Refactored on 11/2/25.
 //
 
 import SwiftUI
@@ -11,7 +12,7 @@ import SwiftUI
 struct BetterBACApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainTabView()
         }
     }
 }

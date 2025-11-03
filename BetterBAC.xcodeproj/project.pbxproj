@@ -7,16 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1450012B2EB7CF1D00D32834 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001262EB7CF1D00D32834 /* Drink.swift */; };
+		1450012C2EB7CF1D00D32834 /* WeightUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001292EB7CF1D00D32834 /* WeightUnit.swift */; };
+		1450012D2EB7CF1D00D32834 /* DrinkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001272EB7CF1D00D32834 /* DrinkType.swift */; };
+		1450012E2EB7CF1D00D32834 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001282EB7CF1D00D32834 /* UserProfile.swift */; };
+		1450012F2EB7CF1D00D32834 /* BiologicalGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001252EB7CF1D00D32834 /* BiologicalGender.swift */; };
+		145001332EB7CF2E00D32834 /* BACCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001302EB7CF2E00D32834 /* BACCalculator.swift */; };
+		145001342EB7CF2E00D32834 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001312EB7CF2E00D32834 /* PersistenceManager.swift */; };
+		145001382EB7CF3D00D32834 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001362EB7CF3D00D32834 /* ProfileViewModel.swift */; };
+		145001392EB7CF3D00D32834 /* BACViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001352EB7CF3D00D32834 /* BACViewModel.swift */; };
+		145001412EB7CF5300D32834 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450013F2EB7CF5300D32834 /* ProfileView.swift */; };
+		145001422EB7CF5300D32834 /* AddDrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450013B2EB7CF5300D32834 /* AddDrinkView.swift */; };
+		145001432EB7CF5300D32834 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450013E2EB7CF5300D32834 /* MainTabView.swift */; };
+		145001442EB7CF5300D32834 /* BACGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450013C2EB7CF5300D32834 /* BACGraphView.swift */; };
+		145001452EB7CF5300D32834 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450013D2EB7CF5300D32834 /* HomeView.swift */; };
 		14DB30AC2C0FD1890050A6A9 /* BetterBACApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DB30AB2C0FD1890050A6A9 /* BetterBACApp.swift */; };
-		14DB30AE2C0FD1890050A6A9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DB30AD2C0FD1890050A6A9 /* ContentView.swift */; };
 		14DB30B02C0FD18A0050A6A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14DB30AF2C0FD18A0050A6A9 /* Assets.xcassets */; };
 		14DB30B32C0FD18A0050A6A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14DB30B22C0FD18A0050A6A9 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		145001252EB7CF1D00D32834 /* BiologicalGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiologicalGender.swift; sourceTree = "<group>"; };
+		145001262EB7CF1D00D32834 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
+		145001272EB7CF1D00D32834 /* DrinkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkType.swift; sourceTree = "<group>"; };
+		145001282EB7CF1D00D32834 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		145001292EB7CF1D00D32834 /* WeightUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightUnit.swift; sourceTree = "<group>"; };
+		145001302EB7CF2E00D32834 /* BACCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BACCalculator.swift; sourceTree = "<group>"; };
+		145001312EB7CF2E00D32834 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		145001352EB7CF3D00D32834 /* BACViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BACViewModel.swift; sourceTree = "<group>"; };
+		145001362EB7CF3D00D32834 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		1450013B2EB7CF5300D32834 /* AddDrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinkView.swift; sourceTree = "<group>"; };
+		1450013C2EB7CF5300D32834 /* BACGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BACGraphView.swift; sourceTree = "<group>"; };
+		1450013D2EB7CF5300D32834 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		1450013E2EB7CF5300D32834 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		1450013F2EB7CF5300D32834 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		14DB30A82C0FD1890050A6A9 /* BetterBAC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterBAC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14DB30AB2C0FD1890050A6A9 /* BetterBACApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterBACApp.swift; sourceTree = "<group>"; };
-		14DB30AD2C0FD1890050A6A9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		14DB30AF2C0FD18A0050A6A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14DB30B22C0FD18A0050A6A9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -32,6 +58,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		145001242EB7CF1000D32834 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		1450012A2EB7CF1D00D32834 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				145001252EB7CF1D00D32834 /* BiologicalGender.swift */,
+				145001262EB7CF1D00D32834 /* Drink.swift */,
+				145001272EB7CF1D00D32834 /* DrinkType.swift */,
+				145001282EB7CF1D00D32834 /* UserProfile.swift */,
+				145001292EB7CF1D00D32834 /* WeightUnit.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		145001322EB7CF2E00D32834 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				145001302EB7CF2E00D32834 /* BACCalculator.swift */,
+				145001312EB7CF2E00D32834 /* PersistenceManager.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		145001372EB7CF3D00D32834 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				145001352EB7CF3D00D32834 /* BACViewModel.swift */,
+				145001362EB7CF3D00D32834 /* ProfileViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1450013A2EB7CF5300D32834 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		145001402EB7CF5300D32834 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1450013A2EB7CF5300D32834 /* Components */,
+				1450013B2EB7CF5300D32834 /* AddDrinkView.swift */,
+				1450013C2EB7CF5300D32834 /* BACGraphView.swift */,
+				1450013D2EB7CF5300D32834 /* HomeView.swift */,
+				1450013E2EB7CF5300D32834 /* MainTabView.swift */,
+				1450013F2EB7CF5300D32834 /* ProfileView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		14DB309F2C0FD1890050A6A9 = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +134,12 @@
 		14DB30AA2C0FD1890050A6A9 /* BetterBAC */ = {
 			isa = PBXGroup;
 			children = (
+				145001402EB7CF5300D32834 /* Views */,
+				145001372EB7CF3D00D32834 /* ViewModels */,
+				145001322EB7CF2E00D32834 /* Utilities */,
+				1450012A2EB7CF1D00D32834 /* Models */,
+				145001242EB7CF1000D32834 /* Managers */,
 				14DB30AB2C0FD1890050A6A9 /* BetterBACApp.swift */,
-				14DB30AD2C0FD1890050A6A9 /* ContentView.swift */,
 				14DB30AF2C0FD18A0050A6A9 /* Assets.xcassets */,
 				14DB30B12C0FD18A0050A6A9 /* Preview Content */,
 			);
@@ -95,7 +182,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					14DB30A72C0FD1890050A6A9 = {
 						CreatedOnToolsVersion = 15.4;
@@ -137,8 +224,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14DB30AE2C0FD1890050A6A9 /* ContentView.swift in Sources */,
+				145001332EB7CF2E00D32834 /* BACCalculator.swift in Sources */,
+				145001342EB7CF2E00D32834 /* PersistenceManager.swift in Sources */,
 				14DB30AC2C0FD1890050A6A9 /* BetterBACApp.swift in Sources */,
+				1450012B2EB7CF1D00D32834 /* Drink.swift in Sources */,
+				1450012C2EB7CF1D00D32834 /* WeightUnit.swift in Sources */,
+				1450012D2EB7CF1D00D32834 /* DrinkType.swift in Sources */,
+				1450012E2EB7CF1D00D32834 /* UserProfile.swift in Sources */,
+				1450012F2EB7CF1D00D32834 /* BiologicalGender.swift in Sources */,
+				145001412EB7CF5300D32834 /* ProfileView.swift in Sources */,
+				145001422EB7CF5300D32834 /* AddDrinkView.swift in Sources */,
+				145001432EB7CF5300D32834 /* MainTabView.swift in Sources */,
+				145001442EB7CF5300D32834 /* BACGraphView.swift in Sources */,
+				145001452EB7CF5300D32834 /* HomeView.swift in Sources */,
+				145001382EB7CF3D00D32834 /* ProfileViewModel.swift in Sources */,
+				145001392EB7CF3D00D32834 /* BACViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +280,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 3ZWQ27S93Y;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -203,6 +304,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -243,6 +345,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 3ZWQ27S93Y;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -259,6 +362,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -272,7 +376,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BetterBAC/Preview Content\"";
-				DEVELOPMENT_TEAM = 3ZWQ27S93Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -280,6 +383,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,7 +405,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BetterBAC/Preview Content\"";
-				DEVELOPMENT_TEAM = 3ZWQ27S93Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -309,6 +412,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
