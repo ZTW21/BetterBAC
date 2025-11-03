@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct ProfileView: View {
     @ObservedObject var viewModel: ProfileViewModel
     @StateObject private var sessionHistoryVM = SessionHistoryViewModel()
+    @State private var selectedPhoto: PhotosPickerItem?
+    @State private var showPhotoPicker = false
     
     var body: some View {
         NavigationView {
@@ -18,9 +21,40 @@ struct ProfileView: View {
                     if viewModel.hasProfile, let profile = viewModel.profile {
                         // Profile summary card
                         VStack(spacing: 16) {
-                            Image(systemName: "person.circle.fill")
-                                .font(.system(size: 80))
-                                .foregroundColor(.blue)
+                            ZStack(alignment: .bottomTrailing) {
+                                // Profile image
+                                if let profileImage = viewModel.profileImage {
+                                    Image(uiImage: profileImage)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 80, height: 80)
+                                        .clipShape(Circle())
+                                } else {
+                                    Image(systemName: "person.circle.fill")
+                                        .font(.system(size: 80))
+                                        .foregroundColor(.blue)
+                                }
+                                
+                                // Camera badge
+                                Image(systemName: "camera.circle.fill")
+                                    .font(.system(size: 24))
+                                    .foregroundColor(.blue)
+                                    .background(Circle().fill(Color.white))
+                            }
+                            .onTapGesture {
+                                showPhotoPicker = true
+                            }
+                            .photosPicker(isPresented: $showPhotoPicker,
+                                        selection: $selectedPhoto,
+                                        matching: .images)
+                            .onChange(of: selectedPhoto) { newValue in
+                                Task {
+                                    if let data = try? await newValue?.loadTransferable(type: Data.self),
+                                       let image = UIImage(data: data) {
+                                        viewModel.updateProfilePicture(image)
+                                    }
+                                }
+                            }
                             
                             VStack(spacing: 8) {
                                 Text(profile.sex.rawValue)

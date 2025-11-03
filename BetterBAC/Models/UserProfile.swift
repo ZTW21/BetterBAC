@@ -11,6 +11,7 @@ struct UserProfile: Codable {
     var sex: SexAssignedAtBirth
     var weight: Double
     var weightUnit: WeightUnit
+    var profilePictureData: Data?
     
     var weightInGrams: Double {
         weightUnit.toGrams(weight)
