@@ -12,6 +12,7 @@ class PersistenceManager {
     
     private let userProfileKey = "userProfile"
     private let drinksKey = "drinks"
+    private let sessionsKey = "drinkingSessions"
     
     private init() {}
     
@@ -53,5 +54,33 @@ class PersistenceManager {
     
     func deleteDrinks() {
         UserDefaults.standard.removeObject(forKey: drinksKey)
+    }
+    
+    // MARK: - Drinking Sessions
+    
+    func saveSessions(_ sessions: [DrinkingSession]) {
+        if let encoded = try? JSONEncoder().encode(sessions) {
+            UserDefaults.standard.set(encoded, forKey: sessionsKey)
+        }
+    }
+    
+    func loadSessions() -> [DrinkingSession] {
+        guard let data = UserDefaults.standard.data(forKey: sessionsKey),
+              let sessions = try? JSONDecoder().decode([DrinkingSession].self, from: data) else {
+            return []
+        }
+        return sessions.sorted { $0.startTime > $1.startTime } // Most recent first
+    }
+    
+    func saveSession(_ session: DrinkingSession) {
+        var sessions = loadSessions()
+        sessions.insert(session, at: 0)  // Add to beginning
+        saveSessions(sessions)
+    }
+    
+    func deleteSession(withId id: UUID) {
+        var sessions = loadSessions()
+        sessions.removeAll { $0.id == id }
+        saveSessions(sessions)
     }
 }

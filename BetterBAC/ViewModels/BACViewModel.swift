@@ -16,6 +16,8 @@ class BACViewModel: ObservableObject {
     private var timer: Timer?
     private var cancellables = Set<AnyCancellable>()
     private var currentProfile: UserProfile?
+    private var sessionInProgress: Bool = false
+    private var hasCheckedForCompletedSession = false
     
     init(profileViewModel: ProfileViewModel) {
         loadDrinks()
@@ -25,6 +27,9 @@ class BACViewModel: ObservableObject {
             .sink { [weak self] newProfile in
                 self?.currentProfile = newProfile
                 self?.updateCurrentBAC()
+                
+                // Check for zombie session on first update
+                self?.checkForCompletedSession()
             }
             .store(in: &cancellables)
         
@@ -64,12 +69,24 @@ class BACViewModel: ObservableObject {
     // MARK: - BAC Calculation
     
     func updateCurrentBAC() {
+        let oldBAC = currentBAC
+        
         guard let profile = currentProfile, profile.isComplete else {
             currentBAC = 0.0
             return
         }
         
         currentBAC = BACCalculator.calculateBAC(drinks: drinks, profile: profile)
+        
+        // Session start detection
+        if !sessionInProgress && currentBAC > 0.0 && !drinks.isEmpty {
+            sessionInProgress = true
+        }
+        
+        // Session end detection (BAC dropped to 0 from above 0)
+        if sessionInProgress && oldBAC > 0.0 && currentBAC <= 0.0 {
+            saveCompletedSession()
+        }
     }
     
     // MARK: - Timer for Real-time Updates
@@ -124,5 +141,47 @@ class BACViewModel: ObservableObject {
         }
         
         return dataPoints
+    }
+    
+    // MARK: - Session Management
+    
+    private func checkForCompletedSession() {
+        guard !hasCheckedForCompletedSession else { return }
+        hasCheckedForCompletedSession = true
+        
+        if !drinks.isEmpty && currentBAC <= 0.0 {
+            // Drinks exist but BAC is 0 = completed session while app was closed
+            saveCompletedSession()
+        } else if !drinks.isEmpty && currentBAC > 0.0 {
+            // Session still in progress
+            sessionInProgress = true
+        }
+    }
+    
+    private func saveCompletedSession() {
+        guard let profile = currentProfile,
+              !drinks.isEmpty,
+              let firstDrink = drinks.map({ $0.timestamp }).min() else {
+            return
+        }
+        
+        let peakBAC = calculatePeakBAC()
+        
+        let session = DrinkingSession(
+            startTime: firstDrink,
+            endTime: Date(),
+            drinks: drinks,  // Copy drinks array
+            peakBAC: peakBAC,
+            profileSnapshot: profile
+        )
+        
+        persistenceManager.saveSession(session)
+        clearAllDrinks()  // Reset for next session
+        sessionInProgress = false
+    }
+    
+    private func calculatePeakBAC() -> Double {
+        let graphData = generateGraphData()
+        return graphData.map { $0.1 }.max() ?? currentBAC
     }
 }

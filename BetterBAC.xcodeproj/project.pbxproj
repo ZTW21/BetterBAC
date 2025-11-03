@@ -22,6 +22,11 @@
 		145001442EB7CF5300D32834 /* BACGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450013C2EB7CF5300D32834 /* BACGraphView.swift */; };
 		145001452EB7CF5300D32834 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450013D2EB7CF5300D32834 /* HomeView.swift */; };
 		145001472EB83EEF00D32834 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001462EB83EEF00D32834 /* SettingsView.swift */; };
+		145001492EB8461700D32834 /* DrinkingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001482EB8461700D32834 /* DrinkingSession.swift */; };
+		1450014B2EB8464F00D32834 /* SessionHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450014A2EB8464F00D32834 /* SessionHistoryViewModel.swift */; };
+		1450014D2EB8466800D32834 /* MiniGraphPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450014C2EB8466800D32834 /* MiniGraphPreview.swift */; };
+		145001502EB8467C00D32834 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450014E2EB8467C00D32834 /* SessionDetailView.swift */; };
+		145001512EB8467C00D32834 /* SessionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450014F2EB8467C00D32834 /* SessionRowView.swift */; };
 		14DB30AC2C0FD1890050A6A9 /* BetterBACApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DB30AB2C0FD1890050A6A9 /* BetterBACApp.swift */; };
 		14DB30B02C0FD18A0050A6A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14DB30AF2C0FD18A0050A6A9 /* Assets.xcassets */; };
 		14DB30B32C0FD18A0050A6A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14DB30B22C0FD18A0050A6A9 /* Preview Assets.xcassets */; };
@@ -43,6 +48,11 @@
 		1450013E2EB7CF5300D32834 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		1450013F2EB7CF5300D32834 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		145001462EB83EEF00D32834 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		145001482EB8461700D32834 /* DrinkingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkingSession.swift; sourceTree = "<group>"; };
+		1450014A2EB8464F00D32834 /* SessionHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHistoryViewModel.swift; sourceTree = "<group>"; };
+		1450014C2EB8466800D32834 /* MiniGraphPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGraphPreview.swift; sourceTree = "<group>"; };
+		1450014E2EB8467C00D32834 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
+		1450014F2EB8467C00D32834 /* SessionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowView.swift; sourceTree = "<group>"; };
 		14DB30A82C0FD1890050A6A9 /* BetterBAC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterBAC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14DB30AB2C0FD1890050A6A9 /* BetterBACApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterBACApp.swift; sourceTree = "<group>"; };
 		14DB30AF2C0FD18A0050A6A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,6 +82,7 @@
 			children = (
 				145001252EB7CF1D00D32834 /* BiologicalGender.swift */,
 				145001262EB7CF1D00D32834 /* Drink.swift */,
+				145001482EB8461700D32834 /* DrinkingSession.swift */,
 				145001272EB7CF1D00D32834 /* DrinkType.swift */,
 				145001282EB7CF1D00D32834 /* UserProfile.swift */,
 				145001292EB7CF1D00D32834 /* WeightUnit.swift */,
@@ -92,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				145001352EB7CF3D00D32834 /* BACViewModel.swift */,
+				1450014A2EB8464F00D32834 /* SessionHistoryViewModel.swift */,
 				145001362EB7CF3D00D32834 /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
@@ -111,6 +123,9 @@
 				1450013B2EB7CF5300D32834 /* AddDrinkView.swift */,
 				1450013C2EB7CF5300D32834 /* BACGraphView.swift */,
 				1450013D2EB7CF5300D32834 /* HomeView.swift */,
+				1450014C2EB8466800D32834 /* MiniGraphPreview.swift */,
+				1450014E2EB8467C00D32834 /* SessionDetailView.swift */,
+				1450014F2EB8467C00D32834 /* SessionRowView.swift */,
 				1450013E2EB7CF5300D32834 /* MainTabView.swift */,
 				145001462EB83EEF00D32834 /* SettingsView.swift */,
 				1450013F2EB7CF5300D32834 /* ProfileView.swift */,
@@ -229,6 +244,8 @@
 			files = (
 				145001332EB7CF2E00D32834 /* BACCalculator.swift in Sources */,
 				145001342EB7CF2E00D32834 /* PersistenceManager.swift in Sources */,
+				145001502EB8467C00D32834 /* SessionDetailView.swift in Sources */,
+				145001512EB8467C00D32834 /* SessionRowView.swift in Sources */,
 				14DB30AC2C0FD1890050A6A9 /* BetterBACApp.swift in Sources */,
 				1450012B2EB7CF1D00D32834 /* Drink.swift in Sources */,
 				1450012C2EB7CF1D00D32834 /* WeightUnit.swift in Sources */,
@@ -237,7 +254,10 @@
 				1450012F2EB7CF1D00D32834 /* BiologicalGender.swift in Sources */,
 				145001412EB7CF5300D32834 /* ProfileView.swift in Sources */,
 				145001472EB83EEF00D32834 /* SettingsView.swift in Sources */,
+				145001492EB8461700D32834 /* DrinkingSession.swift in Sources */,
 				145001422EB7CF5300D32834 /* AddDrinkView.swift in Sources */,
+				1450014B2EB8464F00D32834 /* SessionHistoryViewModel.swift in Sources */,
+				1450014D2EB8466800D32834 /* MiniGraphPreview.swift in Sources */,
 				145001432EB7CF5300D32834 /* MainTabView.swift in Sources */,
 				145001442EB7CF5300D32834 /* BACGraphView.swift in Sources */,
 				145001452EB7CF5300D32834 /* HomeView.swift in Sources */,
