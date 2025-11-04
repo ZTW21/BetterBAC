@@ -8,6 +8,7 @@
 import Foundation
 
 struct UserProfile: Codable {
+    var name: String?
     var sex: SexAssignedAtBirth
     var weight: Double
     var weightUnit: WeightUnit

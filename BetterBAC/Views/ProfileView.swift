@@ -47,7 +47,7 @@ struct ProfileView: View {
                             .photosPicker(isPresented: $showPhotoPicker,
                                         selection: $selectedPhoto,
                                         matching: .images)
-                            .onChange(of: selectedPhoto) { newValue in
+                            .onChange(of: selectedPhoto) { _, newValue in
                                 Task {
                                     if let data = try? await newValue?.loadTransferable(type: Data.self),
                                        let image = UIImage(data: data) {
@@ -56,13 +56,13 @@ struct ProfileView: View {
                                 }
                             }
                             
-                            VStack(spacing: 8) {
-                                Text(profile.sex.rawValue)
+                            if let name = profile.name, !name.isEmpty {
+                                Text(name)
                                     .font(.title2)
                                     .fontWeight(.semibold)
-                                
-                                Text("\(String(format: "%.1f", profile.weight)) \(profile.weightUnit.rawValue)")
-                                    .font(.title3)
+                            } else {
+                                Text("Add your name in settings")
+                                    .font(.subheadline)
                                     .foregroundColor(.secondary)
                             }
                         }

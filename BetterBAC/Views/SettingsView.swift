@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     @ObservedObject var viewModel: ProfileViewModel
     
+    @State private var name: String = ""
     @State private var selectedSex: SexAssignedAtBirth = .male
     @State private var weight: String = ""
     @State private var selectedWeightUnit: WeightUnit = .pounds
@@ -17,6 +18,11 @@ struct SettingsView: View {
     
     var body: some View {
         Form {
+            Section(header: Text("Personal Information")) {
+                TextField("Name", text: $name)
+                    .textContentType(.name)
+            }
+            
             Section(header: Text("Sex Assigned At Birth")) {
                 Picker("Sex Assigned At Birth", selection: $selectedSex) {
                     ForEach(SexAssignedAtBirth.allCases, id: \.self) { sex in
@@ -65,6 +71,15 @@ struct SettingsView: View {
             
             if viewModel.hasProfile, let profile = viewModel.profile {
                 Section(header: Text("Current Profile")) {
+                    if let profileName = profile.name, !profileName.isEmpty {
+                        HStack {
+                            Text("Name")
+                            Spacer()
+                            Text(profileName)
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                    
                     HStack {
                         Text("Sex Assigned At Birth")
                         Spacer()
@@ -100,6 +115,7 @@ struct SettingsView: View {
     
     private func loadCurrentProfile() {
         if let profile = viewModel.profile {
+            name = profile.name ?? ""
             selectedSex = profile.sex
             weight = String(format: "%.1f", profile.weight)
             selectedWeightUnit = profile.weightUnit
@@ -111,12 +127,19 @@ struct SettingsView: View {
             return
         }
         
-        viewModel.saveProfile(sex: selectedSex, weight: weightValue, weightUnit: selectedWeightUnit)
+        let profileName = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        viewModel.saveProfile(
+            name: profileName.isEmpty ? nil : profileName,
+            sex: selectedSex,
+            weight: weightValue,
+            weightUnit: selectedWeightUnit
+        )
         showingSaveConfirmation = true
     }
     
     private func deleteProfile() {
         viewModel.deleteProfile()
+        name = ""
         weight = ""
         selectedSex = .male
         selectedWeightUnit = .pounds

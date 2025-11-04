@@ -35,8 +35,13 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-    func saveProfile(sex: SexAssignedAtBirth, weight: Double, weightUnit: WeightUnit) {
-        let newProfile = UserProfile(sex: sex, weight: weight, weightUnit: weightUnit)
+    func saveProfile(name: String?, sex: SexAssignedAtBirth, weight: Double, weightUnit: WeightUnit) {
+        // Preserve existing profile picture data
+        let existingPictureData = profile?.profilePictureData
+        
+        var newProfile = UserProfile(name: name, sex: sex, weight: weight, weightUnit: weightUnit)
+        newProfile.profilePictureData = existingPictureData
+        
         profile = newProfile
         persistenceManager.saveProfile(newProfile)
         hasProfile = newProfile.isComplete
