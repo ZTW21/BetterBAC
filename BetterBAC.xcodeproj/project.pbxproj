@@ -27,6 +27,7 @@
 		1450014D2EB8466800D32834 /* MiniGraphPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450014C2EB8466800D32834 /* MiniGraphPreview.swift */; };
 		145001502EB8467C00D32834 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450014E2EB8467C00D32834 /* SessionDetailView.swift */; };
 		145001512EB8467C00D32834 /* SessionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450014F2EB8467C00D32834 /* SessionRowView.swift */; };
+		145001622EBC0FE200D32834 /* ContributionChart in Frameworks */ = {isa = PBXBuildFile; productRef = 145001612EBC0FE200D32834 /* ContributionChart */; };
 		14DB30AC2C0FD1890050A6A9 /* BetterBACApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DB30AB2C0FD1890050A6A9 /* BetterBACApp.swift */; };
 		14DB30B02C0FD18A0050A6A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14DB30AF2C0FD18A0050A6A9 /* Assets.xcassets */; };
 		14DB30B32C0FD18A0050A6A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14DB30B22C0FD18A0050A6A9 /* Preview Assets.xcassets */; };
@@ -64,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				145001622EBC0FE200D32834 /* ContributionChart in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +218,9 @@
 				Base,
 			);
 			mainGroup = 14DB309F2C0FD1890050A6A9;
+			packageReferences = (
+				145001602EBC0FE200D32834 /* XCRemoteSwiftPackageReference "SwiftUI-ContributionChart" */,
+			);
 			productRefGroup = 14DB30A92C0FD1890050A6A9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -472,6 +477,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		145001602EBC0FE200D32834 /* XCRemoteSwiftPackageReference "SwiftUI-ContributionChart" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/VIkill33/SwiftUI-ContributionChart.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		145001612EBC0FE200D32834 /* ContributionChart */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 145001602EBC0FE200D32834 /* XCRemoteSwiftPackageReference "SwiftUI-ContributionChart" */;
+			productName = ContributionChart;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 14DB30A02C0FD1890050A6A9 /* Project object */;
 }

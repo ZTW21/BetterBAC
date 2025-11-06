@@ -7,12 +7,38 @@
 
 import SwiftUI
 import PhotosUI
+import ContributionChart
 
 struct ProfileView: View {
     @ObservedObject var viewModel: ProfileViewModel
     @StateObject private var sessionHistoryVM = SessionHistoryViewModel()
     @State private var selectedPhoto: PhotosPickerItem?
     @State private var showPhotoPicker = false
+    
+    // Generate chart data for last 98 days (7 rows × 14 columns)
+    private var chartData: [Double] {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let daysToShow = 98
+        
+        // Create a dictionary mapping dates to max peakBAC for that day
+        var bacByDate: [Date: Double] = [:]
+        for session in sessionHistoryVM.sessions {
+            let sessionDate = calendar.startOfDay(for: session.startTime)
+            let currentMax = bacByDate[sessionDate] ?? 0.0
+            bacByDate[sessionDate] = max(currentMax, session.peakBAC)
+        }
+        
+        // Build array from oldest to newest (last element = today)
+        var data: [Double] = []
+        for dayOffset in (0..<daysToShow).reversed() {
+            if let date = calendar.date(byAdding: .day, value: -dayOffset, to: today) {
+                data.append(bacByDate[date] ?? 0.0)
+            }
+        }
+        
+        return data
+    }
     
     var body: some View {
         NavigationView {
@@ -45,8 +71,8 @@ struct ProfileView: View {
                                 showPhotoPicker = true
                             }
                             .photosPicker(isPresented: $showPhotoPicker,
-                                        selection: $selectedPhoto,
-                                        matching: .images)
+                                          selection: $selectedPhoto,
+                                          matching: .images)
                             .onChange(of: selectedPhoto) { _, newValue in
                                 Task {
                                     if let data = try? await newValue?.loadTransferable(type: Data.self),
@@ -65,8 +91,20 @@ struct ProfileView: View {
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                             }
+                            
+                            // Drinking Activity Chart
+                            ContributionChartView(data: chartData,
+                                                  rows: 7,
+                                                  columns: 14,
+                                                  targetValue: 0.25,
+                                                  blockColor: .red)
+                            .padding()
+                            .frame(width: 325, height: 180)
+                            .background(Color(.systemGray5))
+                            .cornerRadius(12)
+                            .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 2)
                         }
-                        .padding(30)
+                        .padding(15)
                         .frame(maxWidth: .infinity)
                         .background(Color(.systemGray6))
                         .cornerRadius(16)
