@@ -5,7 +5,7 @@ A modern iOS app for responsibly tracking Blood Alcohol Content (BAC) levels.
 ## Features
 
 - **Real-time BAC Tracking** - Monitor your BAC using the scientifically-backed Widmark Equation
-- **User Profile** - Save your biological gender and weight for accurate calculations
+- **User Profile** - Save your sex assigned at birth and weight for accurate calculations
 - **Drink Library** - Quick-add common drinks or create custom entries
 - **Session History** - Review past drinking sessions with detailed BAC graphs
 - **Activity Chart** - GitHub-style contribution chart showing 14 weeks of drinking patterns
