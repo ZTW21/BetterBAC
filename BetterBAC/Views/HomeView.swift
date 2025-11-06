@@ -16,113 +16,120 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing: 20) {
-                    if !profileViewModel.hasProfile {
-                        // Warning when profile not set up
-                        VStack(spacing: 10) {
-                            Image(systemName: "exclamationmark.triangle.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.orange)
-                            
-                            Text("Profile Not Set Up")
-                                .font(.headline)
-                            
-                            Text("Please set up your profile in the Profile tab to calculate your BAC.")
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                                .multilineTextAlignment(.center)
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color(.systemGroupedBackground))
-                        .cornerRadius(10)
-                        .padding()
-                    } else {
-                        // Current BAC Display
-                        VStack(spacing: 8) {
-                            Text("Current BAC")
-                                .font(.headline)
-                                .foregroundColor(.secondary)
-                            
-                            Text(String(format: "%.3f", bacViewModel.currentBAC))
-                                .font(.system(size: 60, weight: .bold, design: .rounded))
-                                .foregroundColor(bacColor)
-                            
-                            Text(bacStatus)
-                                .font(.subheadline)
-                                .foregroundColor(bacColor)
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color(.systemGroupedBackground))
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                        
-                        // Add Drink Button
-                        Button(action: { showingAddDrink = true }) {
-                            HStack {
-                                Image(systemName: "plus.circle.fill")
-                                Text("Add Drink")
-                                    .fontWeight(.semibold)
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                        }
-                        .padding(.horizontal)
-                        
-                        // Graph
-                        if !bacViewModel.drinks.isEmpty {
-                            BACGraphView(dataPoints: bacViewModel.generateGraphData())
-                        }
-                        
-                        // Drinks List
-                        VStack(alignment: .leading, spacing: 10) {
-                            HStack {
-                                Text("Drinks Log")
+            VStack(spacing: 0) {
+                ScrollView {
+                    VStack(spacing: 20) {
+                        if !profileViewModel.hasProfile {
+                            // Warning when profile not set up
+                            VStack(spacing: 10) {
+                                Image(systemName: "exclamationmark.triangle.fill")
+                                    .font(.largeTitle)
+                                    .foregroundColor(.orange)
+                                
+                                Text("Profile Not Set Up")
                                     .font(.headline)
                                 
-                                Spacer()
+                                Text("Please set up your profile in the Profile tab to calculate your BAC.")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                                    .multilineTextAlignment(.center)
+                            }
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color(.systemGroupedBackground))
+                            .cornerRadius(10)
+                            .padding()
+                        } else {
+                            // Current BAC Display
+                            VStack(spacing: 8) {
+                                Text("Current BAC")
+                                    .font(.headline)
+                                    .foregroundColor(.secondary)
                                 
-                                if !bacViewModel.drinks.isEmpty {
-                                    Button(role: .destructive, action: { showingClearConfirmation = true }) {
-                                        Text("Clear All")
-                                            .font(.caption)
-                                            .foregroundColor(.red)
-                                    }
+                                Text(String(format: "%.3f", bacViewModel.currentBAC))
+                                    .font(.system(size: 60, weight: .bold, design: .rounded))
+                                    .foregroundColor(bacColor)
+                                
+                                Text(bacStatus)
+                                    .font(.subheadline)
+                                    .foregroundColor(bacColor)
+                            }
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color(.systemGroupedBackground))
+                            .cornerRadius(10)
+                            .padding(.horizontal)
+                            
+                            // Add Drink Button
+                            Button(action: { showingAddDrink = true }) {
+                                HStack {
+                                    Image(systemName: "plus.circle.fill")
+                                    Text("Add Drink")
+                                        .fontWeight(.semibold)
                                 }
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
                             }
                             .padding(.horizontal)
                             
-                            if bacViewModel.drinks.isEmpty {
-                                Text("No drinks logged yet")
-                                    .foregroundColor(.secondary)
-                                    .frame(maxWidth: .infinity, alignment: .center)
-                                    .padding()
-                            } else {
-                                ForEach(bacViewModel.drinks.reversed()) { drink in
-                                    DrinkRowView(drink: drink)
+                            // Graph
+                            if !bacViewModel.drinks.isEmpty {
+                                BACGraphView(dataPoints: bacViewModel.generateGraphData())
+                            }
+                            
+                            // Banner Ad
+                            BannerAdView()
+                                .frame(height: 50)
+                                .background(Color(.systemBackground))
+                            
+                            // Drinks List
+                            VStack(alignment: .leading, spacing: 10) {
+                                HStack {
+                                    Text("Drinks Log")
+                                        .font(.headline)
+                                    
+                                    Spacer()
+                                    
+                                    if !bacViewModel.drinks.isEmpty {
+                                        Button(role: .destructive, action: { showingClearConfirmation = true }) {
+                                            Text("Clear All")
+                                                .font(.caption)
+                                                .foregroundColor(.red)
+                                        }
+                                    }
+                                }
+                                .padding(.horizontal)
+                                
+                                if bacViewModel.drinks.isEmpty {
+                                    Text("No drinks logged yet")
+                                        .foregroundColor(.secondary)
+                                        .frame(maxWidth: .infinity, alignment: .center)
+                                        .padding()
+                                } else {
+                                    ForEach(bacViewModel.drinks.reversed()) { drink in
+                                        DrinkRowView(drink: drink)
+                                    }
                                 }
                             }
+                            .padding(.top)
                         }
-                        .padding(.top)
                     }
                 }
-            }
-            .navigationTitle("BAC Tracker")
-            .sheet(isPresented: $showingAddDrink) {
-                AddDrinkView(viewModel: bacViewModel)
-            }
-            .alert("Clear All Drinks?", isPresented: $showingClearConfirmation) {
-                Button("Cancel", role: .cancel) { }
-                Button("Clear All", role: .destructive) {
-                    bacViewModel.clearAllDrinks()
+                .navigationTitle("BAC Tracker")
+                .sheet(isPresented: $showingAddDrink) {
+                    AddDrinkView(viewModel: bacViewModel)
                 }
-            } message: {
-                Text("This will remove all logged drinks and reset your BAC to 0.00.")
+                .alert("Clear All Drinks?", isPresented: $showingClearConfirmation) {
+                    Button("Cancel", role: .cancel) { }
+                    Button("Clear All", role: .destructive) {
+                        bacViewModel.clearAllDrinks()
+                    }
+                } message: {
+                    Text("This will remove all logged drinks and reset your BAC to 0.00.")
+                }
             }
         }
     }
