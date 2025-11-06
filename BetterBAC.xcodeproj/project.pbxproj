@@ -28,6 +28,9 @@
 		145001502EB8467C00D32834 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450014E2EB8467C00D32834 /* SessionDetailView.swift */; };
 		145001512EB8467C00D32834 /* SessionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450014F2EB8467C00D32834 /* SessionRowView.swift */; };
 		145001622EBC0FE200D32834 /* ContributionChart in Frameworks */ = {isa = PBXBuildFile; productRef = 145001612EBC0FE200D32834 /* ContributionChart */; };
+		145001652EBC437700D32834 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 145001642EBC437700D32834 /* GoogleMobileAds */; };
+		145001682EBC4B7F00D32834 /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001672EBC4B7F00D32834 /* BannerAdView.swift */; };
+		1450016A2EBC4B9400D32834 /* AdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001692EBC4B9400D32834 /* AdManager.swift */; };
 		14DB30AC2C0FD1890050A6A9 /* BetterBACApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DB30AB2C0FD1890050A6A9 /* BetterBACApp.swift */; };
 		14DB30B02C0FD18A0050A6A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14DB30AF2C0FD18A0050A6A9 /* Assets.xcassets */; };
 		14DB30B32C0FD18A0050A6A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14DB30B22C0FD18A0050A6A9 /* Preview Assets.xcassets */; };
@@ -54,6 +57,9 @@
 		1450014C2EB8466800D32834 /* MiniGraphPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGraphPreview.swift; sourceTree = "<group>"; };
 		1450014E2EB8467C00D32834 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		1450014F2EB8467C00D32834 /* SessionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowView.swift; sourceTree = "<group>"; };
+		145001662EBC46F200D32834 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		145001672EBC4B7F00D32834 /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
+		145001692EBC4B9400D32834 /* AdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdManager.swift; sourceTree = "<group>"; };
 		14DB30A82C0FD1890050A6A9 /* BetterBAC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterBAC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14DB30AB2C0FD1890050A6A9 /* BetterBACApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterBACApp.swift; sourceTree = "<group>"; };
 		14DB30AF2C0FD18A0050A6A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -65,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				145001652EBC437700D32834 /* GoogleMobileAds in Frameworks */,
 				145001622EBC0FE200D32834 /* ContributionChart in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,6 +82,7 @@
 		145001242EB7CF1000D32834 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				145001692EBC4B9400D32834 /* AdManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -114,6 +122,7 @@
 		1450013A2EB7CF5300D32834 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				145001672EBC4B7F00D32834 /* BannerAdView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -154,6 +163,7 @@
 		14DB30AA2C0FD1890050A6A9 /* BetterBAC */ = {
 			isa = PBXGroup;
 			children = (
+				145001662EBC46F200D32834 /* Info.plist */,
 				145001402EB7CF5300D32834 /* Views */,
 				145001372EB7CF3D00D32834 /* ViewModels */,
 				145001322EB7CF2E00D32834 /* Utilities */,
@@ -220,6 +230,7 @@
 			mainGroup = 14DB309F2C0FD1890050A6A9;
 			packageReferences = (
 				145001602EBC0FE200D32834 /* XCRemoteSwiftPackageReference "SwiftUI-ContributionChart" */,
+				145001632EBC437700D32834 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = 14DB30A92C0FD1890050A6A9 /* Products */;
 			projectDirPath = "";
@@ -264,8 +275,10 @@
 				1450014B2EB8464F00D32834 /* SessionHistoryViewModel.swift in Sources */,
 				1450014D2EB8466800D32834 /* MiniGraphPreview.swift in Sources */,
 				145001432EB7CF5300D32834 /* MainTabView.swift in Sources */,
+				145001682EBC4B7F00D32834 /* BannerAdView.swift in Sources */,
 				145001442EB7CF5300D32834 /* BACGraphView.swift in Sources */,
 				145001452EB7CF5300D32834 /* HomeView.swift in Sources */,
+				1450016A2EBC4B9400D32834 /* AdManager.swift in Sources */,
 				145001382EB7CF3D00D32834 /* ProfileViewModel.swift in Sources */,
 				145001392EB7CF3D00D32834 /* BACViewModel.swift in Sources */,
 			);
@@ -407,6 +420,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"BetterBAC/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BetterBAC/Info.plist;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This app uses advertising to support development. Your data helps us show relevant ads.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -436,6 +451,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"BetterBAC/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BetterBAC/Info.plist;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This app uses advertising to support development. Your data helps us show relevant ads.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -487,6 +504,14 @@
 				minimumVersion = 1.0.3;
 			};
 		};
+		145001632EBC437700D32834 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.12.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -494,6 +519,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 145001602EBC0FE200D32834 /* XCRemoteSwiftPackageReference "SwiftUI-ContributionChart" */;
 			productName = ContributionChart;
+		};
+		145001642EBC437700D32834 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 145001632EBC437700D32834 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

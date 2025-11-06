@@ -106,6 +106,13 @@ struct SessionDetailView: View {
         }
         .navigationTitle("Session Details")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            // Show interstitial ad every 3rd time
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let rootViewController = windowScene.windows.first?.rootViewController {
+                AdManager.shared.showInterstitialIfNeeded(from: rootViewController)
+            }
+        }
     }
     
     private func generateFullGraphData() -> [(Date, Double)] {
