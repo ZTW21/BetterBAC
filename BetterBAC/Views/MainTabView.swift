@@ -18,17 +18,17 @@ struct MainTabView: View {
     }
     
     var body: some View {
-        TabView {
-            HomeView(profileViewModel: profileViewModel, bacViewModel: bacViewModel)
-                .tabItem {
-                    Label("Home", systemImage: "house.fill")
-                }
-            
-            ProfileView(viewModel: profileViewModel)
-                .tabItem {
-                    Label("Profile", systemImage: "person.fill")
-                }
-        }
+            TabView {
+                HomeView(profileViewModel: profileViewModel, bacViewModel: bacViewModel)
+                    .tabItem {
+                        Label("Home", systemImage: "house.fill")
+                    }
+                
+                ProfileView(viewModel: profileViewModel)
+                    .tabItem {
+                        Label("Profile", systemImage: "person.fill")
+                    }
+            }
     }
 }
 

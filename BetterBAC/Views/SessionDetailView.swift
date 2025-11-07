@@ -104,7 +104,14 @@ struct SessionDetailView: View {
             }
             .padding(.vertical)
         }
-        .navigationTitle("Session Details")
+        .toolbar() {
+            ToolbarItem(placement: .principal) {
+                HeaderView(title: "Details"){
+//                    dismiss()
+                }
+                    .frame(height: 56)
+            }
+        }
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             // Show interstitial ad every 3rd time
