@@ -78,13 +78,19 @@ struct BACGraphView: View {
     }
 }
 
-#Preview {
+#Preview("Screenshot 2: BAC Graph with Nice Curve") {
+    let now = Date()
     let sampleData: [(Date, Double)] = [
-        (Date().addingTimeInterval(-3600), 0.02),
-        (Date().addingTimeInterval(-2400), 0.05),
-        (Date().addingTimeInterval(-1200), 0.08),
-        (Date(), 0.06)
+        (now.addingTimeInterval(-7200), 0.00),  // 2 hours ago - start
+        (now.addingTimeInterval(-6600), 0.025), // After first drink
+        (now.addingTimeInterval(-5400), 0.048), // After second drink
+        (now.addingTimeInterval(-4200), 0.062), // Peak approaching
+        (now.addingTimeInterval(-3600), 0.068), // Peak
+        (now.addingTimeInterval(-2400), 0.062), // Declining
+        (now.addingTimeInterval(-1800), 0.055), // Continuing down
+        (now.addingTimeInterval(-1200), 0.048), // Still declining
+        (now, 0.041)                             // Current - safe level
     ]
     
-    BACGraphView(dataPoints: sampleData)
+    return BACGraphView(dataPoints: sampleData)
 }

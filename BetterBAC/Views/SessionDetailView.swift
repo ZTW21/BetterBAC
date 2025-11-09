@@ -10,6 +10,9 @@ import SwiftUI
 struct SessionDetailView: View {
     let session: DrinkingSession
     
+    @Environment(\.dismiss) var dismiss
+    @State private var showingDeleteConfirmation = false
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
@@ -111,8 +114,25 @@ struct SessionDetailView: View {
                 }
                     .frame(height: 56)
             }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(role: .destructive) {
+                    showingDeleteConfirmation = true
+                } label: {
+                    Image(systemName: "trash")
+                        .foregroundColor(.red)
+                }
+            }
         }
         .navigationBarTitleDisplayMode(.inline)
+        .alert("Delete Session?", isPresented: $showingDeleteConfirmation) {
+            Button("Cancel", role: .cancel) { }
+            Button("Delete", role: .destructive) {
+                deleteSession()
+            }
+        } message: {
+            Text("This will permanently delete this drinking session.")
+        }
         .onAppear {
             // Show interstitial ad every 3rd time
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
@@ -120,6 +140,11 @@ struct SessionDetailView: View {
                 AdManager.shared.showInterstitialIfNeeded(from: rootViewController)
             }
         }
+    }
+    
+    private func deleteSession() {
+        PersistenceManager.shared.deleteSession(withId: session.id)
+        dismiss()
     }
     
     private func generateFullGraphData() -> [(Date, Double)] {
@@ -159,22 +184,10 @@ struct SessionDetailView: View {
     }
 }
 
-#Preview {
-    let sampleDrinks = [
-        Drink(timestamp: Date().addingTimeInterval(-7200), type: .beer, amountOz: 12.0, abvPercent: 5.0),
-        Drink(timestamp: Date().addingTimeInterval(-5400), type: .wine, amountOz: 5.0, abvPercent: 12.0),
-        Drink(timestamp: Date().addingTimeInterval(-3600), type: .beer, amountOz: 12.0, abvPercent: 5.0)
-    ]
+#Preview("Screenshot 4: Session Detail with 4 Drinks") {
+    let session = MockData.createDetailSession()
     
-    let sampleSession = DrinkingSession(
-        startTime: Date().addingTimeInterval(-7200),
-        endTime: Date(),
-        drinks: sampleDrinks,
-        peakBAC: 0.065,
-        profileSnapshot: UserProfile(sex: .male, weight: 170, weightUnit: .pounds)
-    )
-    
-    NavigationView {
-        SessionDetailView(session: sampleSession)
+    return NavigationStack {
+        SessionDetailView(session: session)
     }
 }
