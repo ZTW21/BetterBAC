@@ -1,0 +1,44 @@
+{
+  "fill" : {
+    "automatic-gradient" : "srgb:0.07843,0.14118,0.21176,1.00000"
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "fill-specializations" : [
+            {
+              "appearance" : "tinted",
+              "value" : {
+                "solid" : "srgb:0.70618,1.00000,1.00000,1.00000"
+              }
+            }
+          ],
+          "image-name" : "BACAPP-3-cropped.svg",
+          "name" : "BACAPP-3-cropped",
+          "position" : {
+            "scale" : 1.58,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}
