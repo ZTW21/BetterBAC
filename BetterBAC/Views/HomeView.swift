@@ -204,9 +204,13 @@ struct DrinkRowView: View {
     }
 }
 
-#Preview {
-    let profileVM = ProfileViewModel()
-    let bacVM = BACViewModel(profileViewModel: profileVM)
+#Preview("Screenshot 1: Home with Moderate Session") {
+    let (profileVM, bacVM) = MockData.createMockProfile()
     
-    HomeView(profileViewModel: profileVM, bacViewModel: bacVM)
+    // Add drinks for moderate BAC (~0.04)
+    for drink in MockData.createModerateSession() {
+        bacVM.addDrink(drink)
+    }
+    
+    return HomeView(profileViewModel: profileVM, bacViewModel: bacVM)
 }

@@ -9,6 +9,7 @@ import Foundation
 import GoogleMobileAds
 import SwiftUI
 
+@MainActor
 class AdManager: NSObject, ObservableObject {
     static let shared = AdManager()
     
@@ -35,24 +36,42 @@ class AdManager: NSObject, ObservableObject {
         loadInterstitial()
     }
     
+    // MARK: - Purchase Check
+    
+    func shouldShowAds() -> Bool {
+        return !PurchaseManager.shared.hasRemoveAdsPurchase
+    }
+    
     // MARK: - Interstitial Ad Methods
     
     func loadInterstitial() {
+        guard shouldShowAds() else {
+            print("Ads disabled - user has Remove Ads purchase")
+            return
+        }
+        
         let request = Request()
         InterstitialAd.load(with: interstitialAdUnitID, request: request) { [weak self] ad, error in
-            if let error = error {
-                print("Failed to load interstitial ad: \(error.localizedDescription)")
-                self?.isInterstitialReady = false
-                return
+            Task { @MainActor in
+                if let error = error {
+                    print("Failed to load interstitial ad: \(error.localizedDescription)")
+                    self?.isInterstitialReady = false
+                    return
+                }
+                self?.interstitial = ad
+                self?.interstitial?.fullScreenContentDelegate = self
+                self?.isInterstitialReady = true
+                print("Interstitial ad loaded successfully")
             }
-            self?.interstitial = ad
-            self?.interstitial?.fullScreenContentDelegate = self
-            self?.isInterstitialReady = true
-            print("Interstitial ad loaded successfully")
         }
     }
     
     func showInterstitialIfNeeded(from viewController: UIViewController) {
+        guard shouldShowAds() else {
+            print("Ads disabled - user has Remove Ads purchase")
+            return
+        }
+        
         sessionDetailViewCount += 1
         
         // Show ad every 3rd time
@@ -72,7 +91,12 @@ class AdManager: NSObject, ObservableObject {
     
     // MARK: - Banner Ad Method
     
-    func createBannerView() -> BannerView {
+    func createBannerView() -> BannerView? {
+        guard shouldShowAds() else {
+            print("Ads disabled - user has Remove Ads purchase")
+            return nil
+        }
+        
         let banner = BannerView(adSize: AdSizeBanner)
         banner.adUnitID = bannerAdUnitID
         banner.load(Request())

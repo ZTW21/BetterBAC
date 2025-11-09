@@ -9,12 +9,14 @@ import SwiftUI
 
 struct SettingsView: View {
     @ObservedObject var viewModel: ProfileViewModel
+    @ObservedObject private var purchaseManager = PurchaseManager.shared
     
     @State private var name: String = ""
     @State private var selectedSex: SexAssignedAtBirth = .male
     @State private var weight: String = ""
     @State private var selectedWeightUnit: WeightUnit = .pounds
     @State private var showingSaveConfirmation = false
+    @State private var showingPurchaseSuccess = false
     
     var body: some View {
         Form {
@@ -95,6 +97,64 @@ struct SettingsView: View {
                     }
                 }
             }
+            
+            Section(header: Text("Remove Ads")) {
+                if purchaseManager.hasRemoveAdsPurchase {
+                    HStack {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.green)
+                        Text("Ads Removed")
+                            .fontWeight(.semibold)
+                    }
+                } else {
+                    Button(action: {
+                        Task {
+                            await purchaseManager.purchase()
+                            if purchaseManager.hasRemoveAdsPurchase {
+                                showingPurchaseSuccess = true
+                            }
+                        }
+                    }) {
+                        HStack {
+                            Spacer()
+                            if purchaseManager.isLoading {
+                                ProgressView()
+                                    .padding(.trailing, 8)
+                            }
+                            VStack(spacing: 4) {
+                                Text("Remove Ads Forever")
+                                    .fontWeight(.semibold)
+                                Text("$4.99")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                            Spacer()
+                        }
+                    }
+                    .disabled(purchaseManager.isLoading)
+                    
+                    Button("Redeem Offer Code") {
+                        Task {
+                            await purchaseManager.presentOfferCodeRedemption()
+                        }
+                        
+                    }
+                    .disabled(purchaseManager.isLoading)
+                }
+                
+                Button("Restore Purchases") {
+                    Task {
+                        await purchaseManager.restorePurchases()
+                    }
+                }
+                .disabled(purchaseManager.isLoading)
+                
+                if let error = purchaseManager.purchaseError {
+                    Text(error)
+                        .font(.caption)
+                        .foregroundColor(.red)
+                }
+            }
         }
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
@@ -103,6 +163,11 @@ struct SettingsView: View {
             Button("OK", role: .cancel) { }
         } message: {
             Text("Your profile has been saved successfully.")
+        }
+        .alert("Success!", isPresented: $showingPurchaseSuccess) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("Ads have been removed! Thank you for your support.")
         }
     }
     

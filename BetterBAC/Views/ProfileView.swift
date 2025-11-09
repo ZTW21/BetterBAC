@@ -170,6 +170,20 @@ struct ProfileView: View {
     }
 }
 
-#Preview {
-    ProfileView(viewModel: ProfileViewModel())
+#Preview("Screenshot 5: Profile with History") {
+    let profileVM = ProfileViewModel()
+    let profile = UserProfile(
+        name: "Alex",
+        sex: .male,
+        weight: 170,
+        weightUnit: .pounds
+    )
+    profileVM.profile = profile
+    
+    // Load preview profile image
+    if let image = UIImage(named: "stock-man.jpg") {
+        profileVM.profileImage = image
+    }
+    
+    return ProfileView(viewModel: profileVM)
 }
