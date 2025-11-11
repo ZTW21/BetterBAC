@@ -184,10 +184,10 @@ struct SessionDetailView: View {
     }
 }
 
-#Preview("Screenshot 4: Session Detail with 4 Drinks") {
-    let session = MockData.createDetailSession()
-    
-    return NavigationStack {
-        SessionDetailView(session: session)
-    }
-}
+//#Preview("Screenshot 4: Session Detail with 4 Drinks") {
+//    let session = MockData.createDetailSession()
+//    
+//    return NavigationStack {
+//        SessionDetailView(session: session)
+//    }
+//}

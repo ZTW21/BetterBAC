@@ -125,7 +125,7 @@ struct AddDrinkView: View {
     }
 }
 
-#Preview("Screenshot 3: Add Drink - Beer Selected") {
-    let (profileVM, bacVM) = MockData.createMockProfile()
-    return AddDrinkView(viewModel: bacVM)
-}
+//#Preview("Screenshot 3: Add Drink - Beer Selected") {
+//    let (profileVM, bacVM) = MockData.createMockProfile()
+//    return AddDrinkView(viewModel: bacVM)
+//}

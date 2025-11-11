@@ -204,13 +204,13 @@ struct DrinkRowView: View {
     }
 }
 
-#Preview("Screenshot 1: Home with Moderate Session") {
-    let (profileVM, bacVM) = MockData.createMockProfile()
-    
-    // Add drinks for moderate BAC (~0.04)
-    for drink in MockData.createModerateSession() {
-        bacVM.addDrink(drink)
-    }
-    
-    return HomeView(profileViewModel: profileVM, bacViewModel: bacVM)
-}
+//#Preview("Screenshot 1: Home with Moderate Session") {
+//    let (profileVM, bacVM) = MockData.createMockProfile()
+//    
+//    // Add drinks for moderate BAC (~0.04)
+//    for drink in MockData.createModerateSession() {
+//        bacVM.addDrink(drink)
+//    }
+//    
+//    return HomeView(profileViewModel: profileVM, bacViewModel: bacVM)
+//}
