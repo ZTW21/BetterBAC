@@ -36,6 +36,7 @@
 		145001732EC126CB00D32834 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001722EC126CB00D32834 /* MockData.swift */; };
 		145001772EC13FFA00D32834 /* BACApp2.icon in Resources */ = {isa = PBXBuildFile; fileRef = 145001762EC13FFA00D32834 /* BACApp2.icon */; };
 		145001792EC1432500D32834 /* stock-man.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 145001782EC1432500D32834 /* stock-man.jpg */; };
+		1450017B2EC364B800D32834 /* BACApp3.icon in Resources */ = {isa = PBXBuildFile; fileRef = 1450017A2EC364B800D32834 /* BACApp3.icon */; };
 		14DB30AC2C0FD1890050A6A9 /* BetterBACApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DB30AB2C0FD1890050A6A9 /* BetterBACApp.swift */; };
 		14DB30B02C0FD18A0050A6A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14DB30AF2C0FD18A0050A6A9 /* Assets.xcassets */; };
 		14DB30B32C0FD18A0050A6A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14DB30B22C0FD18A0050A6A9 /* Preview Assets.xcassets */; };
@@ -71,6 +72,7 @@
 		145001722EC126CB00D32834 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		145001762EC13FFA00D32834 /* BACApp2.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = BACApp2.icon; sourceTree = "<group>"; };
 		145001782EC1432500D32834 /* stock-man.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "stock-man.jpg"; sourceTree = "<group>"; };
+		1450017A2EC364B800D32834 /* BACApp3.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = BACApp3.icon; sourceTree = "<group>"; };
 		14DB30A82C0FD1890050A6A9 /* BetterBAC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterBAC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14DB30AB2C0FD1890050A6A9 /* BetterBACApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterBACApp.swift; sourceTree = "<group>"; };
 		14DB30AF2C0FD18A0050A6A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				14DB30AA2C0FD1890050A6A9 /* BetterBAC */,
 				14DB30A92C0FD1890050A6A9 /* Products */,
 				145001762EC13FFA00D32834 /* BACApp2.icon */,
+				1450017A2EC364B800D32834 /* BACApp3.icon */,
 			);
 			sourceTree = "<group>";
 		};
@@ -265,6 +268,7 @@
 			files = (
 				145001772EC13FFA00D32834 /* BACApp2.icon in Resources */,
 				145001792EC1432500D32834 /* stock-man.jpg in Resources */,
+				1450017B2EC364B800D32834 /* BACApp3.icon in Resources */,
 				14DB30B32C0FD18A0050A6A9 /* Preview Assets.xcassets in Resources */,
 				14DB30B02C0FD18A0050A6A9 /* Assets.xcassets in Resources */,
 			);
@@ -435,11 +439,11 @@
 		14DB30B72C0FD18A0050A6A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = BACApp2;
+				ASSETCATALOG_COMPILER_APPICON_NAME = BACApp3;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"BetterBAC/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -456,23 +460,25 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZackWilson.BetterBAC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		14DB30B82C0FD18A0050A6A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = BACApp2;
+				ASSETCATALOG_COMPILER_APPICON_NAME = BACApp3;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"BetterBAC/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -489,12 +495,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZackWilson.BetterBAC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
