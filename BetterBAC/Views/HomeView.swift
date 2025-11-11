@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @ObservedObject var profileViewModel: ProfileViewModel
     @ObservedObject var bacViewModel: BACViewModel
+    @ObservedObject private var purchaseManager = PurchaseManager.shared
     
     @State private var showingAddDrink = false
     @State private var showingClearConfirmation = false
@@ -80,10 +81,12 @@ struct HomeView: View {
                             BACGraphView(dataPoints: bacViewModel.generateGraphData())
                         }
                         
-                        // Banner Ad
-                        BannerAdView()
-                            .frame(height: 50)
-                            .background(Color(.systemBackground))
+                        // Banner Ad - only show if user hasn't purchased ad removal
+                        if !purchaseManager.hasRemoveAdsPurchase {
+                            BannerAdView()
+                                .frame(height: 50)
+                                .background(Color(.systemBackground))
+                        }
                         
                         // Drinks List
                         VStack(alignment: .leading, spacing: 10) {
