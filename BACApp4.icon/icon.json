@@ -1,0 +1,63 @@
+{
+  "fill" : {
+    "automatic-gradient" : "srgb:0.05098,0.10588,0.16471,1.00000"
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "image-name" : "icon_PM_wine glass-nowine 3.svg",
+          "name" : "icon_PM_wine glass-nowine 3",
+          "position" : {
+            "scale" : 1.55,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "fill" : {
+            "solid" : "srgb:1.00000,1.00000,0.00000,1.00000"
+          },
+          "image-name" : "wine-part1.svg",
+          "name" : "wine-part1",
+          "opacity" : 0.6,
+          "position" : {
+            "scale" : 2.25,
+            "translation-in-points" : [
+              10.429338536297905,
+              2.348662490829952
+            ]
+          }
+        },
+        {
+          "image-name" : "wine-part2.svg",
+          "name" : "wine-part2",
+          "opacity" : 1,
+          "position" : {
+            "scale" : 2.25,
+            "translation-in-points" : [
+              11.52902515047083,
+              -60.15771220472425
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}
