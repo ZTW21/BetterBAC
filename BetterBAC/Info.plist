@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>This app uses your data to show you personalized ads and support development.</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-6185838911408177~1035908476</string>
 	<key>SKAdNetworkItems</key>
