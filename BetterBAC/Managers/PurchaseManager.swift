@@ -17,6 +17,7 @@ class PurchaseManager: ObservableObject {
     @Published var purchaseError: String?
     
     private let productID = "com.betterbac.removeads"
+    @Published private(set) var displayPrice: String?
     private var product: Product?
     private var updateListenerTask: Task<Void, Error>?
     
@@ -41,6 +42,7 @@ class PurchaseManager: ObservableObject {
             let products = try await Product.products(for: [productID])
             if let product = products.first {
                 self.product = product
+                self.displayPrice = product.displayPrice
                 print("✅ Loaded product: \(product.displayName) - \(product.displayPrice)")
             } else {
                 print("⚠️ Product not found: \(productID)")

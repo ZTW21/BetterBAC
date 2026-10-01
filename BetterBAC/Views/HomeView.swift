@@ -1,219 +1,101 @@
-//
-//  HomeView.swift
-//  BetterBAC
-//
-//  Created by Zack Wilson on 11/2/24.
-//
-
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var profileViewModel: ProfileViewModel
-    @ObservedObject var bacViewModel: BACViewModel
+    @ObservedObject var sessionViewModel: SessionViewModel
     @ObservedObject private var purchaseManager = PurchaseManager.shared
-    
+    @ObservedObject private var adConsent = AdConsentManager.shared
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var showingAddDrink = false
     @State private var showingClearConfirmation = false
-    
-    private let headerHeight: CGFloat = 56
-    
+    @State private var editingDrink: Drink?
+    @State private var deletingDrink: Drink?
+    @State private var showingDeleteConfirmation = false
+    @State private var showingMetricHelp = false
+
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 20) {
-                    if !profileViewModel.hasProfile {
-                        // Warning when profile not set up
-                        VStack(spacing: 10) {
-                            Image(systemName: "exclamationmark.triangle.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.orange)
-                            
-                            Text("Profile Not Set Up")
-                                .font(.headline)
-                            
-                            Text("Please set up your profile in the Profile tab to calculate your BAC.")
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                                .multilineTextAlignment(.center)
-                        }
-                        .frame(maxWidth: .infinity)
-                        .background(Color(.systemGroupedBackground))
-                        .cornerRadius(10)
-                        .padding()
-                    } else {
-                        // Current BAC Display
-                        VStack(spacing: 8) {
-                            Text("Current BAC")
-                                .font(.headline)
-                                .foregroundColor(.secondary)
-                            
-                            Text(String(format: "%.3f", bacViewModel.currentBAC))
-                                .font(.system(size: 60, weight: .bold, design: .rounded))
-                                .foregroundColor(bacColor)
-                            
-                            Text(bacStatus)
-                                .font(.subheadline)
-                                .foregroundColor(bacColor)
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color(.systemGroupedBackground))
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                        
-                        // Add Drink Button
-                        Button(action: { showingAddDrink = true }) {
-                            HStack {
-                                Image(systemName: "plus.circle.fill")
-                                Text("Add Drink")
-                                    .fontWeight(.semibold)
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
+                    if let error = sessionViewModel.storageError {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text(error).foregroundStyle(AppTheme.destructive)
+                            Button("Retry Loading") { sessionViewModel.reload() }
                         }
                         .padding(.horizontal)
-                        
-                        // Graph
-                        if !bacViewModel.drinks.isEmpty {
-                            BACGraphView(dataPoints: bacViewModel.generateGraphData())
-                        }
-                        
-                        // Banner Ad - only show if user hasn't purchased ad removal
-                        if !purchaseManager.hasRemoveAdsPurchase {
-                            BannerAdView()
-                                .frame(height: 50)
-                                .background(Color(.systemBackground))
-                        }
-                        
-                        // Drinks List
-                        VStack(alignment: .leading, spacing: 10) {
-                            HStack {
-                                Text("Drinks Log")
-                                    .font(.headline)
-                                
-                                Spacer()
-                                
-                                if !bacViewModel.drinks.isEmpty {
-                                    Button(role: .destructive, action: { showingClearConfirmation = true }) {
-                                        Text("Clear All")
-                                            .font(.caption)
-                                            .foregroundColor(.red)
-                                    }
-                                }
-                            }
-                            .padding(.horizontal)
-                            
-                            if bacViewModel.drinks.isEmpty {
-                                Text("No drinks logged yet")
-                                    .foregroundColor(.secondary)
-                                    .frame(maxWidth: .infinity, alignment: .center)
-                                    .padding()
-                            } else {
-                                ForEach(bacViewModel.drinks.reversed()) { drink in
-                                    DrinkRowView(drink: drink)
-                                }
-                            }
-                        }
-                        .padding(.top)
                     }
-                }
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        HeaderView(title: "BAC Tracker")
-                            .frame(height: 56)
+                    SessionStatsGrid(metrics: sessionViewModel.metrics)
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Pace describes your logged consumption over time. It does not estimate BAC, impairment, or when you will be sober.")
+                            .font(.caption).foregroundStyle(.secondary)
+                        Button("How pace works", systemImage: "info.circle") { showingMetricHelp = true }
+                            .font(.caption)
                     }
+                    .padding(.horizontal)
+                    Button("Add Drink", systemImage: "plus") { showingAddDrink = true }
+                        .bold().frame(maxWidth: .infinity).padding(.vertical, 14)
+                        .foregroundStyle(.white).background(AppTheme.accent)
+                        .clipShape(.rect(cornerRadius: AppTheme.buttonRadius)).padding(.horizontal)
+                        .disabled(sessionViewModel.storageError != nil)
+                    if sessionViewModel.shouldShowHydrationNudge {
+                        HydrationNudge {
+                            withAnimation(reduceMotion ? nil : .easeOut) { sessionViewModel.dismissHydrationNudge() }
+                        }
+                    }
+                    if !sessionViewModel.drinks.isEmpty {
+                        SessionInsightsView(dataPoints: sessionViewModel.graphData, breakdown: sessionViewModel.drinkBreakdown)
+                        Button("End & Save", systemImage: "checkmark.circle") { sessionViewModel.endSession() }
+                            .buttonStyle(.bordered).disabled(sessionViewModel.storageError != nil)
+                    }
+                    if adConsent.canShowAds && !purchaseManager.hasRemoveAdsPurchase { BannerAdView().frame(height: 50) }
+                    drinksLog
                 }
+                .padding(.vertical)
             }
-            .sheet(isPresented: $showingAddDrink) {
-                AddDrinkView(viewModel: bacViewModel)
-            }
-            .alert("Clear All Drinks?", isPresented: $showingClearConfirmation) {
-                Button("Cancel", role: .cancel) { }
-                Button("Clear All", role: .destructive) {
-                    bacViewModel.clearAllDrinks()
-                }
+            .navigationTitle("Pourtime")
+            .sheet(isPresented: $showingAddDrink) { AddDrinkView(viewModel: sessionViewModel) }
+            .sheet(item: $editingDrink) { AddDrinkView(viewModel: sessionViewModel, drink: $0) }
+            .sheet(isPresented: $showingMetricHelp) { MetricHelpView() }
+            .confirmationDialog("Clear All Drinks?", isPresented: $showingClearConfirmation, titleVisibility: .visible) {
+                Button("Clear All", role: .destructive) { sessionViewModel.clearAllDrinks() }
             } message: {
-                Text("This will remove all logged drinks and reset your BAC to 0.00.")
+                Text("This discards your active log without saving it to history. Saved sessions remain available.")
             }
-        }
-    }
-    
-    var bacColor: Color {
-        if bacViewModel.currentBAC >= 0.08 {
-            return .red
-        } else if bacViewModel.currentBAC >= 0.05 {
-            return .orange
-        } else {
-            return .green
-        }
-    }
-    
-    private var bacStatus: String {
-        if bacViewModel.currentBAC >= 0.08 {
-            return "Above Legal Limit"
-        } else if bacViewModel.currentBAC >= 0.05 {
-            return "Impaired"
-        } else if bacViewModel.currentBAC > 0 {
-            return "Below Legal Limit"
-        } else {
-            return "Sober"
-        }
-    }
-}
-
-struct DrinkRowView: View {
-    let drink: Drink
-    
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 4) {
-                HStack {
-                    Text(drink.type.rawValue)
-                        .font(.headline)
-                    
-                    Text("•")
-                        .foregroundColor(.secondary)
-                    
-                    Text("\(String(format: "%.1f", drink.amountOz)) oz")
-                        .foregroundColor(.secondary)
-                    
-                    Text("•")
-                        .foregroundColor(.secondary)
-                    
-                    Text("\(String(format: "%.1f", drink.abvPercent))%")
-                        .foregroundColor(.secondary)
+            .confirmationDialog("Delete This Drink?", isPresented: $showingDeleteConfirmation, titleVisibility: .visible) {
+                Button("Delete Drink", role: .destructive) {
+                    if let drink = deletingDrink { sessionViewModel.deleteDrink(id: drink.id) }
+                    deletingDrink = nil
                 }
-                
-                Text(drink.timestamp, style: .time)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
             }
-            
-            Spacer()
-            
-            Text("\(String(format: "%.1f", drink.alcoholGrams))g")
-                .font(.caption)
-                .padding(6)
-                .background(Color(.systemGray5))
-                .cornerRadius(6)
         }
-        .padding()
-        .background(Color(.systemGroupedBackground))
-        .cornerRadius(10)
-        .padding(.horizontal)
+    }
+
+    private var drinksLog: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Text("Drinks Log").font(.headline)
+                Spacer()
+                if !sessionViewModel.drinks.isEmpty {
+                    Button("Clear All", role: .destructive) { showingClearConfirmation = true }
+                        .font(.subheadline).disabled(sessionViewModel.storageError != nil)
+                }
+            }.padding(.horizontal)
+            if sessionViewModel.drinks.isEmpty {
+                ContentUnavailableView("No drinks logged yet", systemImage: "wineglass")
+            } else {
+                ForEach(sessionViewModel.drinks.reversed()) { drink in
+                    Button { editingDrink = drink } label: { DrinkRowView(drink: drink) }
+                        .buttonStyle(.plain)
+                        .accessibilityHint("Edit this drink or its consumption time")
+                        .contextMenu {
+                            Button("Edit Drink", systemImage: "pencil") { editingDrink = drink }
+                            Button("Delete Drink", systemImage: "trash", role: .destructive) {
+                                deletingDrink = drink
+                                showingDeleteConfirmation = true
+                            }
+                        }
+                        .disabled(sessionViewModel.storageError != nil)
+                }
+            }
+        }
     }
 }
-
-//#Preview("Screenshot 1: Home with Moderate Session") {
-//    let (profileVM, bacVM) = MockData.createMockProfile()
-//    
-//    // Add drinks for moderate BAC (~0.04)
-//    for drink in MockData.createModerateSession() {
-//        bacVM.addDrink(drink)
-//    }
-//    
-//    return HomeView(profileViewModel: profileVM, bacViewModel: bacVM)
-//}

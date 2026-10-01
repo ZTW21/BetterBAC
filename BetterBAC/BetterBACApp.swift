@@ -1,42 +1,29 @@
-//
-//  BetterBACApp.swift
-//  BetterBAC
-//
-//  Created by Zack Wilson on 6/4/24.
-//  Refactored on 11/2/25.
-//
-
 import SwiftUI
-import AppTrackingTransparency
 
 @main
 struct BetterBACApp: App {
+    // Versioned so upgrading users see the new meaning of the live metrics.
+    @AppStorage("hasAcceptedPacingIntroduction") private var hasAcceptedIntroduction = false
+    @Environment(\.scenePhase) private var scenePhase
+
     var body: some Scene {
         WindowGroup {
-            MainTabView()
-                .onAppear {
-                    requestTrackingPermission()
+            Group {
+                if hasAcceptedIntroduction {
+                    #if DEBUG
+                    if let route = QAScreenHost.requestedRoute { QAScreenHost(route: route) }
+                    else { MainTabView() }
+                    #else
+                    MainTabView()
+                    #endif
                 }
-        }
-    }
-    
-    func requestTrackingPermission() {
-        // Request tracking permission for personalized ads
-        // This is required by Apple when collecting advertising data
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            ATTrackingManager.requestTrackingAuthorization { status in
-                switch status {
-                case .authorized:
-                    print("Tracking authorized - personalized ads enabled")
-                case .denied:
-                    print("Tracking denied - using non-personalized ads")
-                case .restricted:
-                    print("Tracking restricted")
-                case .notDetermined:
-                    print("Tracking not determined")
-                @unknown default:
-                    break
-                }
+                else { DisclaimerView(hasAcceptedDisclaimer: $hasAcceptedIntroduction) }
+            }
+            .task(id: scenePhase) {
+                if scenePhase == .active && hasAcceptedIntroduction { await AdConsentManager.shared.prepare() }
+            }
+            .task(id: hasAcceptedIntroduction) {
+                if scenePhase == .active && hasAcceptedIntroduction { await AdConsentManager.shared.prepare() }
             }
         }
     }

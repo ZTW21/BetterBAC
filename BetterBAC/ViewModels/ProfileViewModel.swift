@@ -1,78 +1,59 @@
-//
-//  ProfileViewModel.swift
-//  BetterBAC
-//
-//  Created by Zack Wilson on 11/2/24.
-//
-
 import Foundation
 import Combine
 import UIKit
 
-class ProfileViewModel: ObservableObject {
-    @Published var profile: UserProfile?
-    @Published var hasProfile: Bool = false
-    @Published var profileImage: UIImage?
-    
-    private let persistenceManager = PersistenceManager.shared
-    
-    init() {
+@MainActor
+final class ProfileViewModel: ObservableObject {
+    @Published private(set) var profile: UserProfile?
+    @Published private(set) var profileImage: UIImage?
+    @Published private(set) var storageError: String?
+    private let persistence: PersistenceManager
+
+    init(persistence: PersistenceManager = .shared) {
+        self.persistence = persistence
         loadProfile()
     }
-    
+
     func loadProfile() {
-        profile = persistenceManager.loadProfile()
-        hasProfile = profile != nil && profile?.isComplete == true
-        loadProfilePicture()
+        do { apply(try persistence.loadData().profile) }
+        catch { storageError = error.localizedDescription }
     }
-    
-    func loadProfilePicture() {
-        if let data = profile?.profilePictureData,
-           let image = UIImage(data: data) {
-            profileImage = image
-        } else {
-            profileImage = nil
+
+    @discardableResult
+    func saveProfile(name: String?) -> Bool {
+        update { profile in
+            profile.name = name?.trimmingCharacters(in: .whitespacesAndNewlines)
+            if profile.name?.isEmpty == true { profile.name = nil }
         }
     }
-    
-    func saveProfile(name: String?, sex: SexAssignedAtBirth, weight: Double, weightUnit: WeightUnit) {
-        // Preserve existing profile picture data
-        let existingPictureData = profile?.profilePictureData
-        
-        var newProfile = UserProfile(name: name, sex: sex, weight: weight, weightUnit: weightUnit)
-        newProfile.profilePictureData = existingPictureData
-        
-        profile = newProfile
-        persistenceManager.saveProfile(newProfile)
-        hasProfile = newProfile.isComplete
-    }
-    
-    func updateProfile(_ updatedProfile: UserProfile) {
-        profile = updatedProfile
-        persistenceManager.saveProfile(updatedProfile)
-        hasProfile = updatedProfile.isComplete
-        loadProfilePicture()
-    }
-    
+
     func updateProfilePicture(_ image: UIImage) {
-        guard var currentProfile = profile else { return }
-        
-        if let data = image.jpegData(compressionQuality: 0.8) {
-            currentProfile.profilePictureData = data
-            updateProfile(currentProfile)
-        }
+        guard let bytes = image.jpegData(compressionQuality: 0.8) else { return }
+        _ = update { $0.profilePictureData = bytes }
     }
-    
-    func removeProfilePicture() {
-        guard var currentProfile = profile else { return }
-        
-        currentProfile.profilePictureData = nil
-        updateProfile(currentProfile)
-    }
-    
+
+    func removeProfilePicture() { _ = update { $0.profilePictureData = nil } }
+
     func deleteProfile() {
-        profile = nil
-        hasProfile = false
-        persistenceManager.deleteProfile()
+        do { apply(try persistence.update { $0.profile = nil }.profile) }
+        catch { storageError = error.localizedDescription }
+    }
+
+    private func update(_ mutation: (inout UserProfile) -> Void) -> Bool {
+        do {
+            let data = try persistence.update { data in
+                var profile = data.profile ?? UserProfile()
+                mutation(&profile)
+                data.profile = profile
+            }
+            apply(data.profile)
+            return true
+        } catch { storageError = error.localizedDescription; return false }
+    }
+
+    private func apply(_ profile: UserProfile?) {
+        self.profile = profile
+        profileImage = profile?.profilePictureData.flatMap { UIImage(data: $0) }
+        storageError = nil
     }
 }

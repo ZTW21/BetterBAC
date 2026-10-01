@@ -1,0 +1,16 @@
+{
+  "version": "3.0",
+  "name": "Pourtime",
+  "subtitle": "Drink Log & Live Pacing",
+  "primaryCategory": "Food & Drink",
+  "secondaryCategory": "Lifestyle",
+  "releaseType": "MANUAL",
+  "marketingURL": "",
+  "copyright": "2026 Zachary Wilson",
+  "keywords": "drink,log,tracker,pacing,timeline,session,history,beer,wine,spirits",
+  "promotionalText": "Log each drink at its actual time. Follow your live drinking pace, review recent intake, and keep a personal journal of your sessions.",
+  "description": "YOUR DRINKS, IN THEIR OWN TIME\n\nPourtime is a personal drink journal with live pacing. Record what you drank and when you drank it, then see your logged consumption over the course of a session.\n\nLIVE DRINKING PACE\nAverage pace rises when you log another drink and decreases between drinks after the initial five-minute window. It is the total US standard drinks logged divided by elapsed session hours, with a five-minute minimum denominator.\n\nRECENT INTAKE\nSee the US standard drinks logged in the past 60 minutes, your session total, and elapsed time. One US standard drink contains 14 grams of alcohol. Intake totals are calculated from the volume and ABV you enter.\n\nTIMESTAMPED DRINK LOG\nAdd beer, wine, spirits, or another beverage using common values or your own volume and ABV. Choose the actual consumption time, correct an entry, or record an alcohol-free drink at 0% ABV.\n\nSESSION HISTORY\nTap End & Save to keep a session. When your next drink follows a gap of eight hours or more, Pourtime saves the previous log and starts another. Review pacing charts, drink details, estimated calories, and daily logged-intake patterns.\n\nOPTIONAL PROFILE\nAdd a name and photo if you like. No weight, biological-sex information, or account is required to log drinks.\n\nPRIVACY\nDrink logs and your optional profile are stored on your device. Pourtime does not send these records to its advertising SDK. The app includes advertising, which may collect device identifiers, approximate location derived from IP addresses, advertising interactions, and diagnostic information. See our privacy policy and App Privacy disclosures for details. Tracking permission is optional.\n\nREMOVE ADS\nAn optional one-time purchase removes advertising. Existing purchases can be restored.\n\nUNDERSTAND THE METRICS\nPourtime describes your logged consumption history. It does not measure or estimate blood alcohol content, impairment, alcohol remaining in your body, or when you will be sober. A lower pace or an empty past-hour window does not mean you are unimpaired. Never use Pourtime to decide whether to drive or operate machinery.",
+  "whatsNew": "ClearBAC is now Pourtime, a timestamped drink journal with live drinking pace and past-hour intake. This update removes software BAC estimates and sober-time predictions. Add or correct consumption times, log 0% ABV drinks, save sessions manually, and review your recorded intake over time. Existing drink history and Remove Ads purchases are preserved.",
+  "privacyPolicyURL": "https://pourtime-privacy.wilsocs.chatgpt.site",
+  "supportURL": "https://pourtime-privacy.wilsocs.chatgpt.site/support.html"
+}

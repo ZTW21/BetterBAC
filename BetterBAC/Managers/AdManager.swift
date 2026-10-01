@@ -7,6 +7,7 @@
 
 import Foundation
 import GoogleMobileAds
+import UserMessagingPlatform
 import SwiftUI
 
 @MainActor
@@ -29,17 +30,23 @@ class AdManager: NSObject, ObservableObject {
     // Session detail view counter (every other time)
     @AppStorage("sessionDetailViewCount") private var sessionDetailViewCount = 0
     
-    private override init() {
-        super.init()
-        // Initialize Mobile Ads SDK
-        MobileAds.shared.start(completionHandler: nil)
+    private var initialized = false
+
+    private override init() { super.init() }
+
+    func initialize() async {
+        guard !initialized else { return }
+        await withCheckedContinuation { continuation in
+            MobileAds.shared.start { _ in continuation.resume() }
+        }
+        initialized = true
         loadInterstitial()
     }
     
     // MARK: - Purchase Check
     
     func shouldShowAds() -> Bool {
-        return !PurchaseManager.shared.hasRemoveAdsPurchase
+        return initialized && ConsentInformation.shared.canRequestAds && !PurchaseManager.shared.hasRemoveAdsPurchase
     }
     
     // MARK: - Interstitial Ad Methods

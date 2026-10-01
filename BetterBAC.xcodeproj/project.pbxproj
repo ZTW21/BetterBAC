@@ -8,22 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		1450012B2EB7CF1D00D32834 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001262EB7CF1D00D32834 /* Drink.swift */; };
-		1450012C2EB7CF1D00D32834 /* WeightUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001292EB7CF1D00D32834 /* WeightUnit.swift */; };
 		1450012D2EB7CF1D00D32834 /* DrinkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001272EB7CF1D00D32834 /* DrinkType.swift */; };
 		1450012E2EB7CF1D00D32834 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001282EB7CF1D00D32834 /* UserProfile.swift */; };
-		1450012F2EB7CF1D00D32834 /* BiologicalGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001252EB7CF1D00D32834 /* BiologicalGender.swift */; };
-		145001332EB7CF2E00D32834 /* BACCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001302EB7CF2E00D32834 /* BACCalculator.swift */; };
+		145001332EB7CF2E00D32834 /* SessionMetricsCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001302EB7CF2E00D32834 /* SessionMetricsCalculator.swift */; };
 		145001342EB7CF2E00D32834 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001312EB7CF2E00D32834 /* PersistenceManager.swift */; };
 		145001382EB7CF3D00D32834 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001362EB7CF3D00D32834 /* ProfileViewModel.swift */; };
-		145001392EB7CF3D00D32834 /* BACViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001352EB7CF3D00D32834 /* BACViewModel.swift */; };
+		145001392EB7CF3D00D32834 /* SessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001352EB7CF3D00D32834 /* SessionViewModel.swift */; };
 		145001412EB7CF5300D32834 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450013F2EB7CF5300D32834 /* ProfileView.swift */; };
 		145001422EB7CF5300D32834 /* AddDrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450013B2EB7CF5300D32834 /* AddDrinkView.swift */; };
 		145001432EB7CF5300D32834 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450013E2EB7CF5300D32834 /* MainTabView.swift */; };
-		145001442EB7CF5300D32834 /* BACGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450013C2EB7CF5300D32834 /* BACGraphView.swift */; };
+		145001442EB7CF5300D32834 /* SessionGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450013C2EB7CF5300D32834 /* SessionGraphView.swift */; };
 		145001452EB7CF5300D32834 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450013D2EB7CF5300D32834 /* HomeView.swift */; };
 		145001472EB83EEF00D32834 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001462EB83EEF00D32834 /* SettingsView.swift */; };
 		145001492EB8461700D32834 /* DrinkingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145001482EB8461700D32834 /* DrinkingSession.swift */; };
-		1450014B2EB8464F00D32834 /* SessionHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450014A2EB8464F00D32834 /* SessionHistoryViewModel.swift */; };
 		1450014D2EB8466800D32834 /* MiniGraphPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450014C2EB8466800D32834 /* MiniGraphPreview.swift */; };
 		145001502EB8467C00D32834 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450014E2EB8467C00D32834 /* SessionDetailView.swift */; };
 		145001512EB8467C00D32834 /* SessionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450014F2EB8467C00D32834 /* SessionRowView.swift */; };
@@ -37,30 +34,41 @@
 		145001772EC13FFA00D32834 /* BACApp2.icon in Resources */ = {isa = PBXBuildFile; fileRef = 145001762EC13FFA00D32834 /* BACApp2.icon */; };
 		145001792EC1432500D32834 /* stock-man.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 145001782EC1432500D32834 /* stock-man.jpg */; };
 		1450017B2EC364B800D32834 /* BACApp3.icon in Resources */ = {isa = PBXBuildFile; fileRef = 1450017A2EC364B800D32834 /* BACApp3.icon */; };
+		14A001012F00000100000001 /* DisclaimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A001002F00000100000001 /* DisclaimerView.swift */; };
+		14A001032F00000200000002 /* DrinkRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A001022F00000200000002 /* DrinkRowView.swift */; };
+		14A001052F00000300000003 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A001042F00000300000003 /* AppTheme.swift */; };
+		14A001072F00000400000004 /* SessionStatsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A001062F00000400000004 /* SessionStatsGrid.swift */; };
+		14A001092F00000500000005 /* DrinkBreakdownChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A001082F00000500000005 /* DrinkBreakdownChart.swift */; };
+		14A0010B2F00000600000006 /* HydrationNudge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A0010A2F00000600000006 /* HydrationNudge.swift */; };
+		14A0010D2F00000700000007 /* SessionInsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A0010C2F00000700000007 /* SessionInsightsView.swift */; };
 		14DB30AC2C0FD1890050A6A9 /* BetterBACApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DB30AB2C0FD1890050A6A9 /* BetterBACApp.swift */; };
 		14DB30B02C0FD18A0050A6A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14DB30AF2C0FD18A0050A6A9 /* Assets.xcassets */; };
 		14DB30B32C0FD18A0050A6A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14DB30B22C0FD18A0050A6A9 /* Preview Assets.xcassets */; };
 		14FD63622EC4D39B00F8C8FB /* BACApp4.icon in Resources */ = {isa = PBXBuildFile; fileRef = 14FD63612EC4D39B00F8C8FB /* BACApp4.icon */; };
+		63BAED642E631E4E15BDC1CB /* SessionMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81D5C883E78DBB9990AA7ED /* SessionMetrics.swift */; };
+		C6AE785F062D2EEF627A7A0D /* PacePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA071E078C949D5C7D03249 /* PacePoint.swift */; };
+		9D54BCB7805E11930200E530 /* StoredAppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FFEE8583D9AEEDB63621A /* StoredAppData.swift */; };
+		67DF2DC7FE4F792EB1E93C69 /* PersistenceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14F84FD9D2F954E90324762 /* PersistenceError.swift */; };
+		D39998E7B3DA1307D1E05260 /* MetricHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D16FB81E705B93C82F1018D /* MetricHelpView.swift */; };
+		7014C5955CC2B3338E356695 /* AdConsentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE8E8505F525C79597499B9 /* AdConsentManager.swift */; };
+		ECEEA0346EA710E5EAA22643 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0757413A6C39C9D4D300FC5A /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		145001252EB7CF1D00D32834 /* BiologicalGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiologicalGender.swift; sourceTree = "<group>"; };
 		145001262EB7CF1D00D32834 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		145001272EB7CF1D00D32834 /* DrinkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkType.swift; sourceTree = "<group>"; };
 		145001282EB7CF1D00D32834 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		145001292EB7CF1D00D32834 /* WeightUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightUnit.swift; sourceTree = "<group>"; };
-		145001302EB7CF2E00D32834 /* BACCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BACCalculator.swift; sourceTree = "<group>"; };
+		145001302EB7CF2E00D32834 /* SessionMetricsCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionMetricsCalculator.swift; sourceTree = "<group>"; };
 		145001312EB7CF2E00D32834 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
-		145001352EB7CF3D00D32834 /* BACViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BACViewModel.swift; sourceTree = "<group>"; };
+		145001352EB7CF3D00D32834 /* SessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewModel.swift; sourceTree = "<group>"; };
 		145001362EB7CF3D00D32834 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		1450013B2EB7CF5300D32834 /* AddDrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinkView.swift; sourceTree = "<group>"; };
-		1450013C2EB7CF5300D32834 /* BACGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BACGraphView.swift; sourceTree = "<group>"; };
+		1450013C2EB7CF5300D32834 /* SessionGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionGraphView.swift; sourceTree = "<group>"; };
 		1450013D2EB7CF5300D32834 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1450013E2EB7CF5300D32834 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		1450013F2EB7CF5300D32834 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		145001462EB83EEF00D32834 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		145001482EB8461700D32834 /* DrinkingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkingSession.swift; sourceTree = "<group>"; };
-		1450014A2EB8464F00D32834 /* SessionHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHistoryViewModel.swift; sourceTree = "<group>"; };
 		1450014C2EB8466800D32834 /* MiniGraphPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGraphPreview.swift; sourceTree = "<group>"; };
 		1450014E2EB8467C00D32834 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		1450014F2EB8467C00D32834 /* SessionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowView.swift; sourceTree = "<group>"; };
@@ -74,11 +82,25 @@
 		145001762EC13FFA00D32834 /* BACApp2.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = BACApp2.icon; sourceTree = "<group>"; };
 		145001782EC1432500D32834 /* stock-man.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "stock-man.jpg"; sourceTree = "<group>"; };
 		1450017A2EC364B800D32834 /* BACApp3.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = BACApp3.icon; sourceTree = "<group>"; };
+		14A001002F00000100000001 /* DisclaimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerView.swift; sourceTree = "<group>"; };
+		14A001022F00000200000002 /* DrinkRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkRowView.swift; sourceTree = "<group>"; };
+		14A001042F00000300000003 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		14A001062F00000400000004 /* SessionStatsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStatsGrid.swift; sourceTree = "<group>"; };
+		14A001082F00000500000005 /* DrinkBreakdownChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkBreakdownChart.swift; sourceTree = "<group>"; };
+		14A0010A2F00000600000006 /* HydrationNudge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationNudge.swift; sourceTree = "<group>"; };
+		14A0010C2F00000700000007 /* SessionInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInsightsView.swift; sourceTree = "<group>"; };
 		14DB30A82C0FD1890050A6A9 /* BetterBAC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterBAC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14DB30AB2C0FD1890050A6A9 /* BetterBACApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterBACApp.swift; sourceTree = "<group>"; };
 		14DB30AF2C0FD18A0050A6A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14DB30B22C0FD18A0050A6A9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		14FD63612EC4D39B00F8C8FB /* BACApp4.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = BACApp4.icon; sourceTree = "<group>"; };
+		D81D5C883E78DBB9990AA7ED /* SessionMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionMetrics.swift; sourceTree = "<group>"; };
+		9DA071E078C949D5C7D03249 /* PacePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacePoint.swift; sourceTree = "<group>"; };
+		3E2FFEE8583D9AEEDB63621A /* StoredAppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredAppData.swift; sourceTree = "<group>"; };
+		A14F84FD9D2F954E90324762 /* PersistenceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceError.swift; sourceTree = "<group>"; };
+		2D16FB81E705B93C82F1018D /* MetricHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricHelpView.swift; sourceTree = "<group>"; };
+		9AE8E8505F525C79597499B9 /* AdConsentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdConsentManager.swift; sourceTree = "<group>"; };
+		0757413A6C39C9D4D300FC5A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +119,7 @@
 		145001242EB7CF1000D32834 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				9AE8E8505F525C79597499B9 /* AdConsentManager.swift */,
 				145001702EBD977700D32834 /* PurchaseManager.swift */,
 				145001692EBC4B9400D32834 /* AdManager.swift */,
 			);
@@ -106,12 +129,14 @@
 		1450012A2EB7CF1D00D32834 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				145001252EB7CF1D00D32834 /* BiologicalGender.swift */,
+				A14F84FD9D2F954E90324762 /* PersistenceError.swift */,
+				3E2FFEE8583D9AEEDB63621A /* StoredAppData.swift */,
+				9DA071E078C949D5C7D03249 /* PacePoint.swift */,
+				D81D5C883E78DBB9990AA7ED /* SessionMetrics.swift */,
 				145001262EB7CF1D00D32834 /* Drink.swift */,
 				145001482EB8461700D32834 /* DrinkingSession.swift */,
 				145001272EB7CF1D00D32834 /* DrinkType.swift */,
 				145001282EB7CF1D00D32834 /* UserProfile.swift */,
-				145001292EB7CF1D00D32834 /* WeightUnit.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -119,8 +144,9 @@
 		145001322EB7CF2E00D32834 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				145001302EB7CF2E00D32834 /* BACCalculator.swift */,
+				145001302EB7CF2E00D32834 /* SessionMetricsCalculator.swift */,
 				145001312EB7CF2E00D32834 /* PersistenceManager.swift */,
+				14A001042F00000300000003 /* AppTheme.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -128,8 +154,7 @@
 		145001372EB7CF3D00D32834 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				145001352EB7CF3D00D32834 /* BACViewModel.swift */,
-				1450014A2EB8464F00D32834 /* SessionHistoryViewModel.swift */,
+				145001352EB7CF3D00D32834 /* SessionViewModel.swift */,
 				145001362EB7CF3D00D32834 /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
@@ -146,9 +171,10 @@
 		145001402EB7CF5300D32834 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2D16FB81E705B93C82F1018D /* MetricHelpView.swift */,
 				1450013A2EB7CF5300D32834 /* Components */,
 				1450013B2EB7CF5300D32834 /* AddDrinkView.swift */,
-				1450013C2EB7CF5300D32834 /* BACGraphView.swift */,
+				1450013C2EB7CF5300D32834 /* SessionGraphView.swift */,
 				1450013D2EB7CF5300D32834 /* HomeView.swift */,
 				1450014C2EB8466800D32834 /* MiniGraphPreview.swift */,
 				1450014E2EB8467C00D32834 /* SessionDetailView.swift */,
@@ -157,6 +183,12 @@
 				145001462EB83EEF00D32834 /* SettingsView.swift */,
 				1450013F2EB7CF5300D32834 /* ProfileView.swift */,
 				1450016D2EBD4EC600D32834 /* HeaderView.swift */,
+				14A001002F00000100000001 /* DisclaimerView.swift */,
+				14A001022F00000200000002 /* DrinkRowView.swift */,
+				14A001062F00000400000004 /* SessionStatsGrid.swift */,
+				14A001082F00000500000005 /* DrinkBreakdownChart.swift */,
+				14A0010A2F00000600000006 /* HydrationNudge.swift */,
+				14A0010C2F00000700000007 /* SessionInsightsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,6 +216,7 @@
 		14DB30AA2C0FD1890050A6A9 /* BetterBAC */ = {
 			isa = PBXGroup;
 			children = (
+				0757413A6C39C9D4D300FC5A /* PrivacyInfo.xcprivacy */,
 				145001662EBC46F200D32834 /* Info.plist */,
 				145001402EB7CF5300D32834 /* Views */,
 				145001372EB7CF3D00D32834 /* ViewModels */,
@@ -269,6 +302,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECEEA0346EA710E5EAA22643 /* PrivacyInfo.xcprivacy in Resources */,
 				14FD63622EC4D39B00F8C8FB /* BACApp4.icon in Resources */,
 				145001772EC13FFA00D32834 /* BACApp2.icon in Resources */,
 				145001792EC1432500D32834 /* stock-man.jpg in Resources */,
@@ -285,32 +319,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				145001332EB7CF2E00D32834 /* BACCalculator.swift in Sources */,
+				7014C5955CC2B3338E356695 /* AdConsentManager.swift in Sources */,
+				D39998E7B3DA1307D1E05260 /* MetricHelpView.swift in Sources */,
+				67DF2DC7FE4F792EB1E93C69 /* PersistenceError.swift in Sources */,
+				9D54BCB7805E11930200E530 /* StoredAppData.swift in Sources */,
+				C6AE785F062D2EEF627A7A0D /* PacePoint.swift in Sources */,
+				63BAED642E631E4E15BDC1CB /* SessionMetrics.swift in Sources */,
+				145001332EB7CF2E00D32834 /* SessionMetricsCalculator.swift in Sources */,
 				145001342EB7CF2E00D32834 /* PersistenceManager.swift in Sources */,
 				145001502EB8467C00D32834 /* SessionDetailView.swift in Sources */,
 				145001732EC126CB00D32834 /* MockData.swift in Sources */,
 				145001512EB8467C00D32834 /* SessionRowView.swift in Sources */,
 				14DB30AC2C0FD1890050A6A9 /* BetterBACApp.swift in Sources */,
 				1450012B2EB7CF1D00D32834 /* Drink.swift in Sources */,
-				1450012C2EB7CF1D00D32834 /* WeightUnit.swift in Sources */,
 				1450016E2EBD4EC600D32834 /* HeaderView.swift in Sources */,
 				1450012D2EB7CF1D00D32834 /* DrinkType.swift in Sources */,
 				1450012E2EB7CF1D00D32834 /* UserProfile.swift in Sources */,
-				1450012F2EB7CF1D00D32834 /* BiologicalGender.swift in Sources */,
 				145001412EB7CF5300D32834 /* ProfileView.swift in Sources */,
 				145001472EB83EEF00D32834 /* SettingsView.swift in Sources */,
 				145001492EB8461700D32834 /* DrinkingSession.swift in Sources */,
 				145001712EBD977700D32834 /* PurchaseManager.swift in Sources */,
 				145001422EB7CF5300D32834 /* AddDrinkView.swift in Sources */,
-				1450014B2EB8464F00D32834 /* SessionHistoryViewModel.swift in Sources */,
 				1450014D2EB8466800D32834 /* MiniGraphPreview.swift in Sources */,
 				145001432EB7CF5300D32834 /* MainTabView.swift in Sources */,
 				145001682EBC4B7F00D32834 /* BannerAdView.swift in Sources */,
-				145001442EB7CF5300D32834 /* BACGraphView.swift in Sources */,
+				145001442EB7CF5300D32834 /* SessionGraphView.swift in Sources */,
 				145001452EB7CF5300D32834 /* HomeView.swift in Sources */,
+				14A001012F00000100000001 /* DisclaimerView.swift in Sources */,
+				14A001032F00000200000002 /* DrinkRowView.swift in Sources */,
+				14A001052F00000300000003 /* AppTheme.swift in Sources */,
+				14A001072F00000400000004 /* SessionStatsGrid.swift in Sources */,
+				14A001092F00000500000005 /* DrinkBreakdownChart.swift in Sources */,
+				14A0010B2F00000600000006 /* HydrationNudge.swift in Sources */,
+				14A0010D2F00000700000007 /* SessionInsightsView.swift in Sources */,
 				1450016A2EBC4B9400D32834 /* AdManager.swift in Sources */,
 				145001382EB7CF3D00D32834 /* ProfileViewModel.swift in Sources */,
-				145001392EB7CF3D00D32834 /* BACViewModel.swift in Sources */,
+				145001392EB7CF3D00D32834 /* SessionViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,12 +491,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "\"BetterBAC/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BetterBAC/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ClearBAC;
+				INFOPLIST_KEY_CFBundleDisplayName = Pourtime;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This app uses advertising to support development. Your data helps us show relevant ads.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -465,7 +509,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZackWilson.BetterBAC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -483,12 +527,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "\"BetterBAC/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BetterBAC/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ClearBAC;
+				INFOPLIST_KEY_CFBundleDisplayName = Pourtime;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This app uses advertising to support development. Your data helps us show relevant ads.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -501,7 +545,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZackWilson.BetterBAC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

@@ -1,20 +1,15 @@
-# BetterBAC
+# Pourtime
 
-A modern iOS app for responsibly tracking Blood Alcohol Content (BAC) levels.
+An iOS drink journal with timestamped entries, live average drinking pace, and past-hour intake. It describes consumption history and does not estimate BAC, impairment, or sober time.
 
-## Features
+- Average pace: US standard drinks / elapsed hours since the first entry, using a disclosed five-minute minimum.
+- Past-hour intake: entries in (now − 60 minutes, now]. One US standard drink = 14 g alcohol.
+- Active entries support consumption-time editing, deletion, custom volume/ABV, and 0% ABV.
+- End & Save archives a session. A next chronological entry after an eight-hour gap starts another log; this is organizational only.
+- Optional name/photo, locally stored records, migration of legacy drink history, and the existing Remove Ads entitlement.
 
-- **Real-time BAC Tracking** - Monitor your BAC using the scientifically-backed Widmark Equation
-- **User Profile** - Save your sex assigned at birth and weight for accurate calculations
-- **Drink Library** - Quick-add common drinks or create custom entries
-- **Session History** - Review past drinking sessions with detailed BAC graphs
-- **Activity Chart** - GitHub-style contribution chart showing 14 weeks of drinking patterns
-- **Safety First** - Visual warnings and educational information about BAC levels
+Open BetterBAC.xcodeproj to build the iOS app (deployment target iOS 17.6). The product/bundle identifier remains unchanged for existing users.
 
-## Disclaimer
+Run core regression tests with `swift test --scratch-path /tmp/PourtimeCoreTests`. These compile the same calculation, persistence, and session-management sources as the iOS app; they use isolated UserDefaults suites.
 
-BetterBAC is for educational and informational purposes only. BAC calculations are estimates and should not be used to determine fitness to drive or operate machinery. Always drink responsibly and never drink and drive.
-
-## Dependencies
-
-- [ContributionChart](https://github.com/LePips/ContributionChart) - Activity visualization
+App Store metadata, review notes, privacy audit, policy source, and remaining release requirements are in AppStore/. Google Mobile Ads and its existing UMP dependency handle advertising consent; SDK setup in the AdMob account and physical-device StoreKit testing must be verified before submission.

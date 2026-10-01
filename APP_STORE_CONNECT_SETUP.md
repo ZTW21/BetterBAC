@@ -12,7 +12,7 @@ Once you're ready to submit your app to the App Store, you'll need to create the
 
 2. **Navigate to Your App**
    - Go to "My Apps"
-   - Select "BetterBAC" (or create it if it doesn't exist yet)
+   - Select "Pourtime" (use existing app record 6504423512)
 
 3. **Create In-App Purchase**
    - Click on the "In-App Purchases" tab
@@ -35,7 +35,7 @@ Once you're ready to submit your app to the App Store, you'll need to create the
    - Click "Create Localization"
    - Select Language: **English (U.S.)**
    - **Display Name:** `Remove Ads Forever`
-   - **Description:** `Remove all advertisements from BetterBAC permanently. Support the development of BetterBAC while enjoying an ad-free experience!`
+   - **Description:** `Remove all advertisements from Pourtime permanently. Support the development of Pourtime while enjoying an ad-free experience!`
    - Upload a screenshot (optional but recommended)
    - Click "Save"
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Drink: Identifiable, Codable {
+struct Drink: Identifiable, Codable, Hashable {
     var id: UUID
     var timestamp: Date
     var type: DrinkType
@@ -28,5 +28,22 @@ struct Drink: Identifiable, Codable {
         let mlPerOz = 29.5735
         let alcoholDensity = 0.789 // g/ml
         return amountOz * mlPerOz * (abvPercent / 100.0) * alcoholDensity
+    }
+    var isValid: Bool {
+        timestamp.timeIntervalSinceReferenceDate.isFinite &&
+        amountOz.isFinite && amountOz > 0 &&
+        abvPercent.isFinite && (0...100).contains(abvPercent) && alcoholGrams.isFinite
+    }
+}
+
+enum DrinkInputParser {
+    static func number(_ text: String, locale: Locale = .current) -> Double? {
+        let value = Double(text.trimmingCharacters(in: .whitespacesAndNewlines)
+            .replacingOccurrences(of: locale.decimalSeparator ?? ".", with: "."))
+        return value.flatMap { $0.isFinite ? $0 : nil }
+    }
+
+    static func text(_ value: Double, locale: Locale = .current) -> String {
+        String(value).replacingOccurrences(of: ".", with: locale.decimalSeparator ?? ".")
     }
 }
