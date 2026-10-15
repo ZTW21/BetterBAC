@@ -1,5 +1,7 @@
 # Pourtime 3.0 release
 
+The subsequent **3.1 (13)** Duo update was submitted October 15, 2026 and is Waiting for Review. See [3.1 release record](release-3.1.md). The original non-Duo store screenshots are preserved; the four new images are in the separate Duo slot.
+
 ## Completed October 1, 2026
 
 - Implemented the timestamped drink journal, shared pacing/intake calculations, session saving and eight-hour organization rule, optional profile, and verified legacy migration.

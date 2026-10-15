@@ -22,8 +22,16 @@ See [adaptive-layout validation](QA/Duo/Validation.md) for simulator evidence an
 
 Version 3.0 was Ready for Distribution. Created 3.1, saved What's New and reviewer instructions, retained the description/contact/privacy/purchase settings and five inherited iPhone screenshots. Automatic release after approval was already selected and is retained; ratings are retained and phased release is off.
 
-Build 13 finished processing and is awaiting its export-compliance declaration. Automatic approval review requires explicit user approval before saving “None of the algorithms mentioned above.” This is the same technical choice used for the previous release; no encryption implementation changed. The release has not yet been submitted for review.
+Build 13 finished processing. With the user's explicit approval, saved “None of the algorithms mentioned above” for its export-compliance declaration. No encryption implementation changed.
 
-Four proposed Duo listing screenshots (Home open/closed, Profile open, and details open) use fictional QA records. Their upload also awaits explicit user approval after automatic approval review blocked the external image disclosure. The five existing iPhone listing screenshots remain inherited.
+With the user's explicit approval, uploaded four Duo listing screenshots: Home open/closed, Profile open, and details open. They use fictional QA records and occupy only the iPhone Duo screenshot slot. After the upload, verified that all five original `01-Pourtime.jpg` through `05-Pourtime.jpg` remain in order in the non-Duo slot as “Using Existing Assets.” No original screenshot was removed or replaced.
+
+## Submitted October 15, 2026
+
+Apple confirmed **1 Item Submitted**, then **Waiting for Review** for **3.1 (13)**. Submission ID: `864809b9-807e-4d60-be59-6bb16e882f69`.
+
+[App Review submission](https://appstoreconnect.apple.com/apps/6504423512/distribution/reviewsubmissions/details/864809b9-807e-4d60-be59-6bb16e882f69). Confirmation and Waiting for Review screenshots are stored locally in ignored `AppStore/Build/submission-3.1-confirmed.jpg` and `AppStore/Build/submission-3.1-waiting-for-review.jpg`; account/submission images are not published to GitHub.
+
+Automatic release after Apple's approval remains selected. Apple approval and public availability are not yet confirmed. No recurring monitoring was configured.
 
 GitHub source sync completed on `main` with release commit `47d7bbd`. IPA SHA-256: `12120dcb68b7cf65bca588a7e7fda1ee24ccee71e36fe48dbe776ddf4203d20d`.
