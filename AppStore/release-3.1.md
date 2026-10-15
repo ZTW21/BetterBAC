@@ -22,4 +22,8 @@ See [adaptive-layout validation](QA/Duo/Validation.md) for simulator evidence an
 
 Version 3.0 was Ready for Distribution. Created 3.1, saved What's New and reviewer instructions, retained the description/contact/privacy/purchase settings and five inherited iPhone screenshots. Automatic release after approval was already selected and is retained; ratings are retained and phased release is off.
 
-Build 13 is uploaded; review submission status will be recorded below after App Store Connect processing and submission.
+Build 13 finished processing and is awaiting its export-compliance declaration. Automatic approval review requires explicit user approval before saving “None of the algorithms mentioned above.” This is the same technical choice used for the previous release; no encryption implementation changed. The release has not yet been submitted for review.
+
+Four proposed Duo listing screenshots (Home open/closed, Profile open, and details open) use fictional QA records. Their upload also awaits explicit user approval after automatic approval review blocked the external image disclosure. The five existing iPhone listing screenshots remain inherited.
+
+GitHub source sync completed on `main` with release commit `47d7bbd`. IPA SHA-256: `12120dcb68b7cf65bca588a7e7fda1ee24ccee71e36fe48dbe776ddf4203d20d`.
