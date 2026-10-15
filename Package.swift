@@ -9,7 +9,7 @@ let package = Package(
     targets: [
         .target(name: "ClearSipCore", path: "BetterBAC", exclude: [
             "Assets.xcassets", "BetterBACApp.swift", "Info.plist", "Managers", "Preview Content", "Views",
-            "ViewModels/ProfileViewModel.swift", "Utilities/AppTheme.swift", "PrivacyInfo.xcprivacy"
+            "ViewModels/ProfileViewModel.swift", "Utilities/AppTheme.swift", "Utilities/AppLayout.swift", "PrivacyInfo.xcprivacy"
         ], sources: [
             "Models", "Utilities/SessionMetricsCalculator.swift", "Utilities/PersistenceManager.swift",
             "ViewModels/SessionViewModel.swift"

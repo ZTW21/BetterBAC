@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HydrationNudge: View {
-    let onDismiss: () -> Void
+    let action: () -> Void
 
     var body: some View {
         HStack(spacing: 10) {
@@ -20,16 +20,18 @@ struct HydrationNudge: View {
 
             Spacer()
 
-            Button("Dismiss", systemImage: "xmark", action: onDismiss)
-                .labelStyle(.iconOnly)
+            Button(action: action) {
+                Label("Dismiss", systemImage: "xmark")
+                    .labelStyle(.iconOnly)
+                    .frame(minWidth: 44, minHeight: 44)
+                    .contentShape(Rectangle())
+            }
                 .font(.caption)
-                .frame(minWidth: 44, minHeight: 44)
                 .foregroundStyle(.secondary)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
         .background(.fill.quaternary)
         .clipShape(.rect(cornerRadius: AppTheme.cardRadius))
-        .padding(.horizontal)
     }
 }

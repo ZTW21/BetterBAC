@@ -7,6 +7,10 @@ struct ProfileView: View {
     @ObservedObject var viewModel: ProfileViewModel
     @ObservedObject var sessionViewModel: SessionViewModel
     @State private var selectedPhoto: PhotosPickerItem?
+    @State private var scrollAnchor: String?
+    @Environment(\.layoutDirection) private var layoutDirection
+    @Environment(\.horizontalSizeClass) private var sizeClass
+    @Environment(\.dynamicTypeSize) private var typeSize
 
     var body: some View {
         NavigationStack {
@@ -14,13 +18,26 @@ struct ProfileView: View {
                 VStack(spacing: 24) {
                     if let error = viewModel.storageError {
                         Text(error).foregroundStyle(AppTheme.destructive).padding(.horizontal)
-                        Button("Retry Loading") { viewModel.loadProfile() }
+                        Button { viewModel.loadProfile() } label: {
+                            Text("Retry Loading").frame(minHeight: 44).contentShape(Rectangle())
+                        }
                     }
-                    profileCard
-                    activityChart
-                    sessionHistory
-                }.padding(.vertical)
+                    AdaptiveColumnsLayout(expanded: AppLayout(sizeClass: sizeClass, typeSize: typeSize).usesColumns, layoutDirection: layoutDirection) {
+                        VStack(spacing: AppLayout.sectionSpacing) {
+                            profileCard.id("profile.card")
+                            activityChart.id("profile.activity")
+                        }
+                        .scrollTargetLayout()
+                        .accessibilityElement(children: .contain)
+                        .frame(maxWidth: .infinity)
+                        sessionHistory
+                    }
+                }
+                .padding(AppLayout.contentMargin)
+                .frame(maxWidth: AppLayout.dashboardWidth)
+                .frame(maxWidth: .infinity)
             }
+            .scrollPosition(id: $scrollAnchor, anchor: .top)
             .navigationTitle("Profile")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -54,13 +71,14 @@ struct ProfileView: View {
                     Image(systemName: "camera.circle.fill").font(.title3).foregroundStyle(AppTheme.accent)
                         .background(Circle().fill(.background))
                 }
+                .contentShape(Rectangle())
             }
             .buttonStyle(.plain).accessibilityLabel("Choose profile photo")
             Text(viewModel.profile?.name ?? "Your drink journal").font(.title3.bold())
             Text("Name and photo are optional.").font(.caption).foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity).padding().background(.fill.quaternary)
-        .clipShape(.rect(cornerRadius: AppTheme.cardRadius)).padding(.horizontal)
+        .clipShape(.rect(cornerRadius: AppTheme.cardRadius))
     }
 
     private var activityChart: some View {
@@ -73,12 +91,12 @@ struct ProfileView: View {
             Text("\(chartData.reduce(0, +), specifier: "%.1f") US standard drinks logged in the past 14 weeks.")
                 .font(.caption).foregroundStyle(.secondary)
         }
-        .padding().background(.fill.quaternary).clipShape(.rect(cornerRadius: AppTheme.cardRadius)).padding(.horizontal)
+        .padding().background(.fill.quaternary).clipShape(.rect(cornerRadius: AppTheme.cardRadius))
     }
 
     private var sessionHistory: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Session History").font(.headline).padding(.horizontal)
+        LazyVStack(alignment: .leading, spacing: 12) {
+            Text("Session History").font(.headline).id("profile.history")
             if let error = sessionViewModel.storageError {
                 Text(error).foregroundStyle(AppTheme.destructive).padding(.horizontal)
             }
@@ -86,9 +104,13 @@ struct ProfileView: View {
                 ContentUnavailableView("No saved sessions", systemImage: "clock.arrow.circlepath", description: Text("End & Save a session to keep it here."))
             }
             ForEach(sessionViewModel.sessions) { session in
-                NavigationLink(value: session) { SessionRowView(session: session) }.buttonStyle(.plain)
+                NavigationLink(value: session) { SessionRowView(session: session) }
+                    .buttonStyle(.plain).id("profile.session.\(session.id)")
             }
         }
+        .scrollTargetLayout()
+        .accessibilityElement(children: .contain)
+        .frame(maxWidth: .infinity, alignment: .topLeading)
     }
 
     private var chartData: [Double] {

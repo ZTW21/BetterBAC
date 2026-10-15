@@ -30,20 +30,28 @@ struct DisclaimerView: View {
                     Spacer(minLength: 0)
                 }
                 .padding(.vertical, 24)
-                .frame(minHeight: geometry.size.height)
+                .frame(maxWidth: AppLayout.readableWidth)
+                .frame(maxWidth: .infinity, minHeight: geometry.size.height)
             }
         }
         .safeAreaInset(edge: .bottom) {
-            Button("I Understand", action: accept)
-                .bold()
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 14)
-                .foregroundStyle(.white)
-                .background(AppTheme.accent)
-                .clipShape(.rect(cornerRadius: AppTheme.buttonRadius))
-                .padding(.horizontal, 24)
-                .padding(.bottom, 24)
-                .background(.background)
+            Button(action: accept) {
+                Text("I Understand")
+                    .bold()
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 14)
+                    .frame(minHeight: 44)
+                    .foregroundStyle(.white)
+                    .background(AppTheme.accent)
+                    .clipShape(.rect(cornerRadius: AppTheme.buttonRadius))
+                    .contentShape(.rect(cornerRadius: AppTheme.buttonRadius))
+            }
+            .buttonStyle(.plain)
+            .frame(maxWidth: AppLayout.readableWidth)
+            .padding(.horizontal, 24)
+            .frame(maxWidth: .infinity)
+            .padding(.bottom, 24)
+            .background(.background)
         }
     }
 

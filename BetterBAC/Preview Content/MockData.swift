@@ -1,5 +1,5 @@
 #if DEBUG
-import SwiftUI
+import Foundation
 
 enum MockData {
     static func drinks(at now: Date) -> [Drink] {
@@ -7,47 +7,29 @@ enum MockData {
          Drink(timestamp: now.addingTimeInterval(-3900), type: .wine, amountOz: 5, abvPercent: 12),
          Drink(timestamp: now.addingTimeInterval(-1200), type: .beer, amountOz: 12, abvPercent: 5)]
     }
-}
 
-/// Launch-only visual QA harness. Fixtures are written to a disposable simulator;
-/// no demo records or routing flags are compiled into an App Store build.
-struct QAScreenHost: View {
-    let route: String
-    @StateObject private var session = SessionViewModel()
-    @StateObject private var profile = ProfileViewModel()
-    @State private var showingSheet = true
-
-    static var requestedRoute: String? {
-        let args = ProcessInfo.processInfo.arguments
-        guard let index = args.firstIndex(of: "--qa-screen"), args.indices.contains(index + 1) else { return nil }
-        let route = args[index + 1]
-        return ["add", "edit", "metrics", "profile", "details", "insights", "settings"].contains(route) ? route : nil
-    }
-
-    var body: some View {
-        Group {
-            if route == "settings" {
-                NavigationStack { SettingsView(viewModel: profile) }
-            } else if route == "details", let saved = session.sessions.first {
-                NavigationStack { SessionDetailView(session: saved, viewModel: session) }
-            } else if route == "insights" {
-                NavigationStack {
-                    ScrollView {
-                        SessionInsightsView(dataPoints: session.graphData, breakdown: session.drinkBreakdown)
-                    }
-                }
-            } else if route == "profile" {
-                MainTabView(initialTab: 1)
-            } else {
-                MainTabView()
-                    .sheet(isPresented: $showingSheet) {
-                        if route == "add" { AddDrinkView(viewModel: session) }
-                        else if route == "edit", let drink = session.drinks.first { AddDrinkView(viewModel: session, drink: drink) }
-                        else { MetricHelpView() }
-                    }
+    static func fixture(_ name: String, at now: Date) -> StoredAppData {
+        guard name != "empty" else { return StoredAppData() }
+        let types = DrinkType.allCases
+        let entryCount = name == "single" ? 1 : (name == "long" ? 40 : 4)
+        let entries = (0..<entryCount).map { index in
+            let type = types[index % types.count]
+            let offset: TimeInterval
+            switch name {
+            case "single": offset = 0
+            case "simultaneous": offset = index == 0 ? -7200 : -1200
+            case "long": offset = Double(index) * -600 - 600
+            default: offset = [-7200.0, -5700, -3900, -1200][index]
             }
+            return Drink(timestamp: now.addingTimeInterval(offset), type: type,
+                         amountOz: type.defaultAmount, abvPercent: name == "zero" ? 0 : type.defaultABV)
+        }.sorted { $0.timestamp < $1.timestamp }
+        let sessions = (1...(name == "long" ? 20 : 3)).map { day in
+            let end = now.addingTimeInterval(Double(day) * -86400)
+            let drinks = Self.drinks(at: end)
+            return DrinkingSession(startTime: drinks[0].timestamp, endTime: end, drinks: drinks)
         }
-        .tint(AppTheme.accent)
+        return StoredAppData(profile: UserProfile(name: "Alex"), activeSessionID: UUID(), drinks: entries, sessions: sessions)
     }
 }
 #endif

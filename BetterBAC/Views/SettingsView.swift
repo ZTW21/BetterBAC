@@ -5,6 +5,7 @@ struct SettingsView: View {
     @ObservedObject private var purchaseManager = PurchaseManager.shared
     @ObservedObject private var adConsent = AdConsentManager.shared
     @State private var name = ""
+    @State private var loadedName = false
     @State private var showingSaveConfirmation = false
     @State private var showingPurchaseSuccess = false
     @State private var showingDeleteConfirmation = false
@@ -49,7 +50,9 @@ struct SettingsView: View {
                             Text("Remove Ads Forever").bold()
                             if let price = purchaseManager.displayPrice { Text(price).font(.caption).foregroundStyle(.secondary) }
                             else { Text("Loading price…").font(.caption) }
-                        }.frame(maxWidth: .infinity)
+                        }
+                        .frame(maxWidth: .infinity, minHeight: 44)
+                        .contentShape(Rectangle())
                     }
                     .disabled(purchaseManager.isLoading || purchaseManager.displayPrice == nil)
                     Button("Redeem Offer Code") { Task { await purchaseManager.presentOfferCodeRedemption() } }
@@ -60,8 +63,14 @@ struct SettingsView: View {
                 if let error = purchaseManager.purchaseError { Text(error).font(.caption).foregroundStyle(AppTheme.destructive) }
             }
         }
+        .readableForm()
+        .scrollDismissesKeyboard(.interactively)
         .navigationTitle("Settings").navigationBarTitleDisplayMode(.inline)
-        .task { name = viewModel.profile?.name ?? "" }
+        .task {
+            guard !loadedName else { return }
+            loadedName = true
+            name = viewModel.profile?.name ?? ""
+        }
         .sheet(isPresented: $showingMetricHelp) { MetricHelpView() }
         .alert("Profile Saved", isPresented: $showingSaveConfirmation) { }
         .alert("Ads Removed", isPresented: $showingPurchaseSuccess) { } message: { Text("Thank you for your support!") }

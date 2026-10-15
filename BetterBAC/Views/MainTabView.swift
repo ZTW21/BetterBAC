@@ -3,12 +3,16 @@ import Combine
 
 struct MainTabView: View {
     @Environment(\.scenePhase) private var scenePhase
-    @StateObject private var profileViewModel = ProfileViewModel()
-    @StateObject private var sessionViewModel = SessionViewModel()
+    @StateObject private var profileViewModel: ProfileViewModel
+    @StateObject private var sessionViewModel: SessionViewModel
     private let refreshTimer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     @State private var selectedTab = 0
 
-    init(initialTab: Int = 0) { _selectedTab = State(initialValue: initialTab) }
+    init(initialTab: Int = 0, profileViewModel: ProfileViewModel? = nil, sessionViewModel: SessionViewModel? = nil) {
+        _selectedTab = State(initialValue: initialTab)
+        _profileViewModel = StateObject(wrappedValue: profileViewModel ?? ProfileViewModel())
+        _sessionViewModel = StateObject(wrappedValue: sessionViewModel ?? SessionViewModel())
+    }
 
     var body: some View {
         TabView(selection: $selectedTab) {

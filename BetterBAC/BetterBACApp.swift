@@ -9,15 +9,12 @@ struct BetterBACApp: App {
     var body: some Scene {
         WindowGroup {
             Group {
-                if hasAcceptedIntroduction {
-                    #if DEBUG
-                    if let route = QAScreenHost.requestedRoute { QAScreenHost(route: route) }
-                    else { MainTabView() }
-                    #else
-                    MainTabView()
-                    #endif
-                }
-                else { DisclaimerView(hasAcceptedDisclaimer: $hasAcceptedIntroduction) }
+                #if DEBUG
+                if let route = QAScreenHost.requestedRoute { QAScreenHost(route: route) }
+                else { introductionOrMain }
+                #else
+                introductionOrMain
+                #endif
             }
             .task(id: scenePhase) {
                 if scenePhase == .active && hasAcceptedIntroduction { await AdConsentManager.shared.prepare() }
@@ -26,5 +23,11 @@ struct BetterBACApp: App {
                 if scenePhase == .active && hasAcceptedIntroduction { await AdConsentManager.shared.prepare() }
             }
         }
+    }
+
+    @ViewBuilder
+    private var introductionOrMain: some View {
+        if hasAcceptedIntroduction { MainTabView() }
+        else { DisclaimerView(hasAcceptedDisclaimer: $hasAcceptedIntroduction) }
     }
 }

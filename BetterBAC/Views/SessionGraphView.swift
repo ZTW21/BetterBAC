@@ -14,10 +14,12 @@ struct SessionGraphView: View {
                 ContentUnavailableView("No data to display", systemImage: "chart.xyaxis.line")
             } else {
                 Chart(dataPoints) { point in
+                    // Exact drink events include before/after values at the same time.
+                    // Stacking those samples adds their heights and creates false spikes.
+                    AreaMark(x: .value("Time", point.time), y: .value("US standard drinks/hour", point.pace), stacking: .unstacked)
+                        .foregroundStyle(AppTheme.accent.opacity(0.12)).interpolationMethod(.linear)
                     LineMark(x: .value("Time", point.time), y: .value("US standard drinks/hour", point.pace))
                         .foregroundStyle(AppTheme.accent).interpolationMethod(.linear)
-                    AreaMark(x: .value("Time", point.time), y: .value("US standard drinks/hour", point.pace))
-                        .foregroundStyle(AppTheme.accent.opacity(0.12)).interpolationMethod(.linear)
                     if point.drinkCount > 0 {
                         PointMark(x: .value("Time consumed", point.time), y: .value("US standard drinks/hour", point.pace))
                             .foregroundStyle(AppTheme.accent)
@@ -38,7 +40,7 @@ struct SessionGraphView: View {
             }
         }
         .padding(.vertical).background(.fill.quaternary)
-        .clipShape(.rect(cornerRadius: AppTheme.cardRadius)).padding(.horizontal)
+        .clipShape(.rect(cornerRadius: AppTheme.cardRadius))
     }
 
     private var timeDomain: ClosedRange<Date> {

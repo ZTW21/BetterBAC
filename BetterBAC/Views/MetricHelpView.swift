@@ -23,8 +23,9 @@ struct MetricHelpView: View {
                     Text("Pace describes your logged consumption over time. It does not estimate BAC, impairment, or when you will be sober. Never use Pourtime to decide whether to drive or operate machinery.")
                 }
             }
+            .readableForm()
             .navigationTitle("How pace works").navigationBarTitleDisplayMode(.inline)
-            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
+            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done", systemImage: "checkmark") { dismiss() } } }
         }
     }
 }

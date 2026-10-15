@@ -52,6 +52,16 @@
 		D39998E7B3DA1307D1E05260 /* MetricHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D16FB81E705B93C82F1018D /* MetricHelpView.swift */; };
 		7014C5955CC2B3338E356695 /* AdConsentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE8E8505F525C79597499B9 /* AdConsentManager.swift */; };
 		ECEEA0346EA710E5EAA22643 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0757413A6C39C9D4D300FC5A /* PrivacyInfo.xcprivacy */; };
+		CF2F0E9CAE869496BD1542FA /* AppLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397C1C4AE47448ED0E4D8CFE /* AppLayout.swift */; };
+		EBBA686F88AF00E44C762733 /* AdaptiveColumnsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF65EC495554B6B248F42241 /* AdaptiveColumnsLayout.swift */; };
+		4F95944BDA67B0CE636476D2 /* AdaptiveMetricsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380CF2D9231DDD84C3DAB0F /* AdaptiveMetricsLayout.swift */; };
+		1A7AADC46037D803A2BDF394 /* ReadableFormModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5917170AC633039F630B66F /* ReadableFormModifier.swift */; };
+		437F2AAA7CF454A55BF755CC /* HomeBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246CDCD742BEE7EC14CD400A /* HomeBannerView.swift */; };
+		218798178679ED722F0071E2 /* DrinkLegendRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5B895028611B1114F62B0 /* DrinkLegendRow.swift */; };
+		B2CDAE5825E6A2BA46F68D81 /* SessionSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F756E91C2659A082A50EA05 /* SessionSummaryView.swift */; };
+		02E47038740588DD889E40AA /* QADataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1F838CAEAE8DAA04AD5166 /* QADataStore.swift */; };
+		98400332FD8C9F7D80AB9249 /* QAScreenHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D75D2A34EF7BF5E8E3731B8 /* QAScreenHost.swift */; };
+		7C377F5D1B907034F5E4874F /* QALayoutHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C9D9C96CA56CAC5FF6F7A8 /* QALayoutHost.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +111,16 @@
 		2D16FB81E705B93C82F1018D /* MetricHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricHelpView.swift; sourceTree = "<group>"; };
 		9AE8E8505F525C79597499B9 /* AdConsentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdConsentManager.swift; sourceTree = "<group>"; };
 		0757413A6C39C9D4D300FC5A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		397C1C4AE47448ED0E4D8CFE /* AppLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLayout.swift; sourceTree = "<group>"; };
+		BF65EC495554B6B248F42241 /* AdaptiveColumnsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveColumnsLayout.swift; sourceTree = "<group>"; };
+		6380CF2D9231DDD84C3DAB0F /* AdaptiveMetricsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveMetricsLayout.swift; sourceTree = "<group>"; };
+		C5917170AC633039F630B66F /* ReadableFormModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadableFormModifier.swift; sourceTree = "<group>"; };
+		246CDCD742BEE7EC14CD400A /* HomeBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBannerView.swift; sourceTree = "<group>"; };
+		33C5B895028611B1114F62B0 /* DrinkLegendRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkLegendRow.swift; sourceTree = "<group>"; };
+		8F756E91C2659A082A50EA05 /* SessionSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSummaryView.swift; sourceTree = "<group>"; };
+		2A1F838CAEAE8DAA04AD5166 /* QADataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QADataStore.swift; sourceTree = "<group>"; };
+		7D75D2A34EF7BF5E8E3731B8 /* QAScreenHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAScreenHost.swift; sourceTree = "<group>"; };
+		F6C9D9C96CA56CAC5FF6F7A8 /* QALayoutHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QALayoutHost.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +164,7 @@
 		145001322EB7CF2E00D32834 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				397C1C4AE47448ED0E4D8CFE /* AppLayout.swift */,
 				145001302EB7CF2E00D32834 /* SessionMetricsCalculator.swift */,
 				145001312EB7CF2E00D32834 /* PersistenceManager.swift */,
 				14A001042F00000300000003 /* AppTheme.swift */,
@@ -163,6 +184,11 @@
 		1450013A2EB7CF5300D32834 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				33C5B895028611B1114F62B0 /* DrinkLegendRow.swift */,
+				246CDCD742BEE7EC14CD400A /* HomeBannerView.swift */,
+				C5917170AC633039F630B66F /* ReadableFormModifier.swift */,
+				6380CF2D9231DDD84C3DAB0F /* AdaptiveMetricsLayout.swift */,
+				BF65EC495554B6B248F42241 /* AdaptiveColumnsLayout.swift */,
 				145001672EBC4B7F00D32834 /* BannerAdView.swift */,
 			);
 			path = Components;
@@ -171,6 +197,7 @@
 		145001402EB7CF5300D32834 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8F756E91C2659A082A50EA05 /* SessionSummaryView.swift */,
 				2D16FB81E705B93C82F1018D /* MetricHelpView.swift */,
 				1450013A2EB7CF5300D32834 /* Components */,
 				1450013B2EB7CF5300D32834 /* AddDrinkView.swift */,
@@ -233,6 +260,9 @@
 		14DB30B12C0FD18A0050A6A9 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				F6C9D9C96CA56CAC5FF6F7A8 /* QALayoutHost.swift */,
+				7D75D2A34EF7BF5E8E3731B8 /* QAScreenHost.swift */,
+				2A1F838CAEAE8DAA04AD5166 /* QADataStore.swift */,
 				145001782EC1432500D32834 /* stock-man.jpg */,
 				145001722EC126CB00D32834 /* MockData.swift */,
 				14DB30B22C0FD18A0050A6A9 /* Preview Assets.xcassets */,
@@ -319,6 +349,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C377F5D1B907034F5E4874F /* QALayoutHost.swift in Sources */,
+				98400332FD8C9F7D80AB9249 /* QAScreenHost.swift in Sources */,
+				02E47038740588DD889E40AA /* QADataStore.swift in Sources */,
+				B2CDAE5825E6A2BA46F68D81 /* SessionSummaryView.swift in Sources */,
+				218798178679ED722F0071E2 /* DrinkLegendRow.swift in Sources */,
+				437F2AAA7CF454A55BF755CC /* HomeBannerView.swift in Sources */,
+				1A7AADC46037D803A2BDF394 /* ReadableFormModifier.swift in Sources */,
+				4F95944BDA67B0CE636476D2 /* AdaptiveMetricsLayout.swift in Sources */,
+				EBBA686F88AF00E44C762733 /* AdaptiveColumnsLayout.swift in Sources */,
+				CF2F0E9CAE869496BD1542FA /* AppLayout.swift in Sources */,
 				7014C5955CC2B3338E356695 /* AdConsentManager.swift in Sources */,
 				D39998E7B3DA1307D1E05260 /* MetricHelpView.swift in Sources */,
 				67DF2DC7FE4F792EB1E93C69 /* PersistenceError.swift in Sources */,
@@ -491,7 +531,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"BetterBAC/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -502,14 +542,14 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZackWilson.BetterBAC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -527,7 +567,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"BetterBAC/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -538,14 +578,14 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZackWilson.BetterBAC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

@@ -3,9 +3,11 @@ import SwiftUI
 struct SessionStatsGrid: View {
     let metrics: SessionMetrics
     @Environment(\.dynamicTypeSize) private var typeSize
+    @Environment(\.layoutDirection) private var layoutDirection
+    @Environment(\.horizontalSizeClass) private var sizeClass
 
     var body: some View {
-        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: typeSize.isAccessibilitySize ? 1 : 2), spacing: 10) {
+        AdaptiveMetricsLayout(allowsFourColumns: sizeClass == .regular, accessibilitySize: typeSize.isAccessibilitySize, layoutDirection: layoutDirection) {
             card(icon: "gauge.medium", title: "Average pace", value: metrics.averagePace, unit: "US std drinks/hr", hero: true)
             card(icon: "clock", title: "Logged in past hour", value: metrics.pastHourStandardDrinks, unit: "US standard drinks")
             card(icon: "wineglass", title: "Total standard drinks", value: metrics.standardDrinks, unit: "US standard drinks")
@@ -15,12 +17,13 @@ struct SessionStatsGrid: View {
                     Text(elapsed(at: context.date)).font(.title2.bold()).fontDesign(.rounded).monospacedDigit()
                 }
                 .foregroundStyle(AppTheme.accent)
-                Text("Since first drink").font(.caption2).foregroundStyle(.secondary)
+                Text("Since first drink").font(.caption).foregroundStyle(.secondary)
             }
-            .frame(maxWidth: .infinity).padding(.vertical, 14)
+            .frame(maxWidth: .infinity, maxHeight: .infinity).padding(.vertical, 14)
             .background(.fill.quaternary).clipShape(.rect(cornerRadius: AppTheme.cardRadius))
+            .accessibilityElement(children: .combine)
         }
-        .padding(.horizontal)
+        .accessibilityElement(children: .contain)
     }
 
     private func card(icon: String, title: String, value: Double, unit: String, hero: Bool = false) -> some View {
@@ -29,11 +32,11 @@ struct SessionStatsGrid: View {
             Text(value, format: .number.precision(.fractionLength(1)))
                 .font(hero ? .largeTitle.bold() : .title2.bold()).fontDesign(.rounded)
                 .foregroundStyle(AppTheme.accent).monospacedDigit()
-            Text(unit).font(.caption2).foregroundStyle(.secondary).multilineTextAlignment(.center)
+            Text(unit).font(.caption).foregroundStyle(.secondary).multilineTextAlignment(.center)
         }
-        .frame(maxWidth: .infinity).padding(12)
+        .frame(maxWidth: .infinity, maxHeight: .infinity).padding(12)
         .background(.fill.quaternary).clipShape(.rect(cornerRadius: AppTheme.cardRadius))
-        .accessibilityElement(children: .combine)
+        .accessibilityElement(children: .ignore)
         .accessibilityLabel(title)
         .accessibilityValue("\(value.formatted(.number.precision(.fractionLength(1)))) \(unit)")
     }

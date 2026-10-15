@@ -44,7 +44,11 @@ struct AddDrinkView: View {
                     Text("Enter 0% for an alcohol-free drink.").font(.caption).foregroundStyle(.secondary)
                 }
                 Section("Time consumed") {
-                    DatePicker("Consumed at", selection: $consumptionTime, in: ...Date(), displayedComponents: [.date, .hourAndMinute])
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Consumed at")
+                        DatePicker("Consumed at", selection: $consumptionTime, in: ...Date(), displayedComponents: [.date, .hourAndMinute])
+                            .labelsHidden()
+                    }
                     Text("Use the actual time you had the drink, even if you log it later.")
                         .font(.caption).foregroundStyle(.secondary)
                 }
@@ -57,17 +61,21 @@ struct AddDrinkView: View {
                         Text("Enter an amount greater than zero, an ABV from 0–100%, and a time that is not in the future.")
                             .font(.caption).foregroundStyle(AppTheme.destructive)
                     }
-                    Button(existingDrink == nil ? "Add Drink" : "Save Changes", action: saveDrink)
-                        .bold().frame(maxWidth: .infinity).disabled(!isValidInput || viewModel.storageError != nil)
                     if existingDrink != nil {
                         Button("Delete Drink", role: .destructive) { showingDeleteConfirmation = true }
                     }
                 }
             }
+            .readableForm()
+            .scrollDismissesKeyboard(.interactively)
             .navigationTitle(existingDrink == nil ? "Add Drink" : "Edit Drink")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
+                ToolbarItem(placement: .cancellationAction) { Button("Cancel", systemImage: "xmark") { dismiss() } }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button(existingDrink == nil ? "Add Drink" : "Save Changes", systemImage: "checkmark", action: saveDrink)
+                        .disabled(!isValidInput || viewModel.storageError != nil)
+                }
             }
             .confirmationDialog("Delete This Drink?", isPresented: $showingDeleteConfirmation, titleVisibility: .visible) {
                 Button("Delete Drink", role: .destructive) {

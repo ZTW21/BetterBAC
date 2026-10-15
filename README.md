@@ -12,4 +12,6 @@ Open BetterBAC.xcodeproj to build the iOS app (deployment target iOS 17.6). The 
 
 Run core regression tests with `swift test --scratch-path /tmp/PourtimeCoreTests`. These compile the same calculation, persistence, and session-management sources as the iOS app; they use isolated UserDefaults suites.
 
+The UI adapts to compact and regular horizontal size classes, with a single column at accessibility text sizes. Duo development requires Xcode 27.1 or later for its native toolbar placement and simulator. See [adaptive-layout validation and screenshots](AppStore/QA/Duo/Validation.md) for build instructions, DEBUG fixtures, completed checks, and remaining manual checks. The deployment target remains iOS 17.6 and distribution remains iPhone only.
+
 App Store metadata, review notes, privacy audit, policy source, and remaining release requirements are in AppStore/. Google Mobile Ads and its existing UMP dependency handle advertising consent; SDK setup in the AdMob account and physical-device StoreKit testing must be verified before submission.
